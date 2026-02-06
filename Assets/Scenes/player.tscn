@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bm4qakp30owd3"]
+
+[ext_resource type="Script" uid="uid://y44vdpbplgey" path="res://Scripts/player.gd" id="1_nev2o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nev2o"]
+radius = 4.0
+height = 14.0
+
+[node name="Player" type="CharacterBody2D" unique_id=940023457]
+scale = Vector2(2, 2)
+script = ExtResource("1_nev2o")
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=1990565265]
+position = Vector2(-28, 2)
+scale = Vector2(3.5, 2)
+color = Color(1, 0.10980392, 0.16470589, 1)
+polygon = PackedVector2Array(8, -0.5, 12, 0, 12, -1, 12, -2, 8, -1.5)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1092003197]
+position = Vector2(-6.9999995, 5.9999995)
+scale = Vector2(1.5555556, 1.4444444)
+color = Color(1, 1, 0.3254902, 1)
+polygon = PackedVector2Array(0, 0, 0, -9, 8.999999, -6.9230766, 8.999999, -2.076923)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864510145]
+position = Vector2(0, -0.455)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_nev2o")
+
+[node name="ShootyPart" type="Node2D" parent="." unique_id=1020144456]
+position = Vector2(14, 0)
