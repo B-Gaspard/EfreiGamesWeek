@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bj58y1elnnkby"]
+
+[ext_resource type="PackedScene" uid="uid://d0cl8vifjjafg" path="res://Assets/Scenes/box.tscn" id="2_iacna"]
+[ext_resource type="PackedScene" uid="uid://bkxkpciwawmfd" path="res://Assets/Scenes/player.tscn" id="2_vost8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_pfv4s"]
+
+[node name="World" type="Node2D" unique_id=1741926370]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1426720472]
+modulate = Color(0.84199995, 1, 0.20999998, 1)
+z_index = -1
+position = Vector2(245.50037, 399.00024)
+scale = Vector2(6787.0005, 4910)
+mesh = SubResource("QuadMesh_pfv4s")
+
+[node name="StaticBody2D" parent="." unique_id=1032467333 instance=ExtResource("2_iacna")]
+position = Vector2(-436, -253)
+
+[node name="StaticBody2D2" parent="." unique_id=1516613571 instance=ExtResource("2_iacna")]
+position = Vector2(-441, 257)
+
+[node name="StaticBody2D3" parent="." unique_id=639603243 instance=ExtResource("2_iacna")]
+position = Vector2(394, 141)
+
+[node name="Player" parent="." unique_id=1688720327 instance=ExtResource("2_vost8")]
