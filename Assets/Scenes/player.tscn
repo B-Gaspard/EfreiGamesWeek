@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cmf12racbdrmp" path="res://icon.svg" id="1_6cd4h"]
 [ext_resource type="Script" uid="uid://0opeglx2dhiw" path="res://Assets/Scenes/player.gd" id="1_38rej"]
-[ext_resource type="Script" uid="uid://cw6s1j5464r6l" path="res://Assets/Scenes/player_collisions.gd" id="2_7dd06"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uc036"]
 animations = [{
@@ -18,6 +17,30 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv8ie"]
 size = Vector2(128, 131)
 
+[sub_resource type="GDScript" id="GDScript_7dd06"]
+script/source = "extends CollisionShape2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Gradient" id="Gradient_38rej"]
+offsets = PackedFloat32Array(0.2139423, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.05810398, 0.05810398, 0.05810398, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t1xgp"]
+gradient = SubResource("Gradient_38rej")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
 [node name="Player" type="CharacterBody2D" unique_id=1688720327]
 script = ExtResource("1_38rej")
 
@@ -32,4 +55,12 @@ sprite_frames = SubResource("SpriteFrames_uc036")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1766223154]
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_dv8ie")
-script = ExtResource("2_7dd06")
+script = SubResource("GDScript_7dd06")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=225022518]
+color = Color(0.965481, 0.9296029, 0.4175406, 1)
+energy = 2.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 1.0
+texture = SubResource("GradientTexture2D_t1xgp")

@@ -5,6 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpanj"]
 size = Vector2(127, 126)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eb7ec"]
+polygon = PackedVector2Array(66, -64, 64, 62, -64, 63, -64, -66)
+
 [node name="StaticBody2D" type="StaticBody2D" unique_id=1032467333]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2069993360]
@@ -14,3 +17,6 @@ shape = SubResource("RectangleShape2D_vpanj")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1698513316]
 modulate = Color(0.75686276, 0.3019608, 1, 1)
 texture = ExtResource("1_eb7ec")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=699720160]
+occluder = SubResource("OccluderPolygon2D_eb7ec")
