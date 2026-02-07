@@ -4,6 +4,9 @@ extends Node2D
 var enemy_scene = preload("res://Assets/Scenes/enemy.tscn")
 var score := 0
 
+func _ready() -> void:
+	$AudioStreamPlayer.play()
+
 func _on_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate()
 
@@ -14,6 +17,3 @@ func _on_timer_timeout() -> void:
 	enemy.global_position = player.global_position + offset
 
 	add_child(enemy)
-
-func _on_enemy_died():
-	print("Score:", score)

@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://clnpxej2512ng" path="res://Assets/Scenes/hand.gd" id="2_t1xgp"]
 [ext_resource type="AudioStream" uid="uid://brd3spjk1vcik" path="res://Assets/Sounds/cock.mp3" id="5_jp3cw"]
 [ext_resource type="AudioStream" uid="uid://bd08wt3275f48" path="res://Assets/Sounds/gunshot1.mp3" id="5_lerqx"]
-[ext_resource type="AudioStream" uid="uid://ceannfgsiyqtn" path="res://Assets/Sounds/lamortdejohnpoole.mp3" id="5_vy5gb"]
 [ext_resource type="AudioStream" uid="uid://2oq3v512xh44" path="res://Assets/Sounds/boots.mp3" id="6_ecf78"]
 [ext_resource type="AudioStream" uid="uid://boq461ftooot3" path="res://Assets/Sounds/gunshot2.mp3" id="6_jp3cw"]
 [ext_resource type="AudioStream" uid="uid://dgmwbyqps8aj3" path="res://Assets/Sounds/gunshot3.mp3" id="7_ecf78"]
@@ -41,13 +40,13 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="Gradient" id="Gradient_7dd06"]
-offsets = PackedFloat32Array(0.54086536, 0.5456731)
+offsets = PackedFloat32Array(0.99278843, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_38rej"]
 gradient = SubResource("Gradient_7dd06")
-width = 500
-height = 500
+width = 1000
+height = 1000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
@@ -100,6 +99,11 @@ energy = 2.0
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_38rej")
 
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1672080463]
+position = Vector2(-6.556511e-07, 0)
+energy = 2.0
+texture = SubResource("GradientTexture2D_38rej")
+
 [node name="Hand" type="Node2D" parent="." unique_id=735776528]
 script = ExtResource("2_t1xgp")
 
@@ -117,11 +121,6 @@ texture = ExtResource("2_38rej")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=500664432]
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_t1xgp")
-
-[node name="DeathFX" type="AudioStreamPlayer" parent="." unique_id=786480086]
-stream = ExtResource("5_vy5gb")
-volume_db = 24.0
-pitch_scale = 0.9
 
 [node name="CockFX" type="AudioStreamPlayer" parent="." unique_id=1652930092]
 stream = ExtResource("5_jp3cw")

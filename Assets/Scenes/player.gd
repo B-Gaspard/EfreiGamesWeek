@@ -1,32 +1,20 @@
 extends CharacterBody2D
-const SPEED = 400
-const TTL_MAX = 500
-var actionnable = true
+
+var SPEED = 80
+const ALIVE = 180
 
 var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
 @onready var shooty_part = $Hand/ShootyPart 
-var label_text = "Score : %s"
+var label_text = "Score : %s\nTTL: %s"
 var score = 0
+var actionnable = true
 
 # Start with 1 barrel straight ahead
 var gun_angles: Array[float] = [0.0]
 var gun_spread_deg: float = 35.0  # Total spread between outermost barrels
 var barrel_muzzle_distance: float = 16.0  # pixels from center
 
-func _process(delta: float) -> void:
-	$AnimatedSprite2D.look_at(get_global_mouse_position())
-	$AnimatedSprite2D.rotate(PI/2)
-	
-	score+=1
-	light_radius-=8*get_process_delta_time()
-	
-	if light_radius <=0:
-		lose()
-	
-	var actual_text = label_text % [score,light_radius]
-	
-	$PointLight2D.texture.height = light_radius
-	$PointLight2D.texture.width=$PointLight2D.texture.height
+
 # ---- FUNCTIONS ----
 
 # Add another barrel, automatically distributed
@@ -42,21 +30,39 @@ func add_gun_upgrade():
 			var angle = lerp(-gun_spread_deg/2, gun_spread_deg/2, float(i)/(num_barrels-1))
 			gun_angles.append(angle)
 	print("Current gun angles:", gun_angles)
+	$CockFX.play()
 
 func add_speed(amount):
 	SPEED += amount
+	$BootFX.play()
 
 # ---- PROCESS LOOP ----
-
+var life = 500.00
 func _process(delta: float) -> void:
-	score += 1
-	var actual_text = label_text % score
-	$Battery.is_stopped()
+	if Input.is_action_just_pressed("reSTART") :
+		get_tree().reload_current_scene()
+	
+	if actionnable:
+		score += 1
+	else :
+		life-=670*get_process_delta_time()
+		
+	var actual_text = label_text % [score,$PointLight2D.texture.width]
+	
+	life = min(life, 750)
+	life-=75*get_process_delta_time()
+	var targetzoom = (1500/life - $Camera2D.zoom.x)/20
+	
+	$Camera2D.zoom.x += targetzoom
+	$Camera2D.zoom.y += targetzoom
+	
+	$PointLight2D.texture.width = life
+	$PointLight2D.texture.height= life
 	
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()
 		
-	$BoxContainer/Label.text = actual_text
+	$Camera2D/BoxContainer/Label.text = actual_text
 
 func _physics_process(delta: float) -> void:
 	# Move player
@@ -67,19 +73,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
-	if actionnable:
-		move_and_slide()
-
-func lose():
-	actionnable = false
-
-
-func _on_body_entered(body: Area2D) :
-	if(body.is_in_group("enemies")):
-		lose()
-
 	# Shooting
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and actionnable:
+		$GunAudio.play()
 		var base_dir = (get_global_mouse_position() - shooty_part.global_position).normalized()
 		var base_angle = base_dir.angle()
 
@@ -96,4 +92,14 @@ func _on_body_entered(body: Area2D) :
 			bullet.direction = dir
 			$/root/World.add_child(bullet)
 
-	move_and_slide()
+	if actionnable:
+		move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemies") and actionnable:
+		lose()
+	
+func lose():
+	actionnable = false
+	$DeathFX.play()
