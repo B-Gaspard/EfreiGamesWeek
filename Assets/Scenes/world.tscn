@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bj58y1elnnkby"]
 
-[ext_resource type="Script" path="res://Assets/Scenes/world.gd" id="1_iacna"]
+[ext_resource type="Script" uid="uid://b8300d5om76hk" path="res://Assets/Scenes/world.gd" id="1_iacna"]
 [ext_resource type="PackedScene" uid="uid://d0cl8vifjjafg" path="res://Assets/Scenes/box.tscn" id="2_iacna"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/player.tscn" id="2_vost8"]
+[ext_resource type="PackedScene" uid="uid://bkxkpciwawmfd" path="res://Assets/Scenes/player.tscn" id="2_vost8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_pfv4s"]
 
@@ -59,3 +59,11 @@ shape = SubResource("WorldBoundaryShape2D_dv8ie")
 [node name="Right" type="CollisionShape2D" parent="Walls" unique_id=1662793293]
 position = Vector2(1, 164)
 shape = SubResource("WorldBoundaryShape2D_pfv4s")
+
+[node name="Timer" type="Timer" parent="." unique_id=2075298249]
+wait_time = 0.5
+autostart = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=967487664]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

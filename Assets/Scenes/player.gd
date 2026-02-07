@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.look_at(get_global_mouse_position())
 	$AnimatedSprite2D.rotate(PI/2)
 	
-	score+=1*get_process_delta_time()
+	score+=1
 	
 	var actual_text = label_text % score
 	$Battery.is_stopped()
