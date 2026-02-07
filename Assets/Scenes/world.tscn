@@ -6,6 +6,20 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_pfv4s"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iacna"]
+normal = Vector2(-0.030597912, 0.9995318)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uc036"]
+distance = -518.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dv8ie"]
+normal = Vector2(1, 0)
+distance = -4.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pfv4s"]
+normal = Vector2(-1, 0)
+distance = -962.0
+
 [node name="World" type="Node2D" unique_id=1741926370]
 script = ExtResource("1_iacna")
 
@@ -26,3 +40,22 @@ position = Vector2(-118, -80)
 position = Vector2(113, -97)
 
 [node name="Player" parent="." unique_id=1688720327 instance=ExtResource("2_vost8")]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=970072078]
+position = Vector2(-484, -267)
+
+[node name="Top" type="CollisionShape2D" parent="Walls" unique_id=1164597358]
+position = Vector2(518, 0)
+shape = SubResource("WorldBoundaryShape2D_iacna")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=129963887]
+position = Vector2(0, 19)
+shape = SubResource("WorldBoundaryShape2D_uc036")
+
+[node name="Left" type="CollisionShape2D" parent="Walls" unique_id=1007661947]
+position = Vector2(4, 178)
+shape = SubResource("WorldBoundaryShape2D_dv8ie")
+
+[node name="Right" type="CollisionShape2D" parent="Walls" unique_id=1662793293]
+position = Vector2(1, 164)
+shape = SubResource("WorldBoundaryShape2D_pfv4s")
