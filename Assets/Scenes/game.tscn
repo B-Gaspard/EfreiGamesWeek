@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cedh1krwt6kn5"]
 
-[ext_resource type="PackedScene" uid="uid://bm4qakp30owd3" path="res://Assets/Scenes/player.tscn" id="1_nbu75"]
+[ext_resource type="PackedScene" uid="uid://bm4qakp30owd3" path="res://Assets/Scenes/CA_TIRE_A_BALLE.tscn" id="1_nbu75"]
 [ext_resource type="Script" uid="uid://bis5k0ewree0o" path="res://Scripts/game.gd" id="1_pfbgl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nbu75"]
