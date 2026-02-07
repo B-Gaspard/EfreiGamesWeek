@@ -27,6 +27,7 @@ window/canvas_textures/default_texture_filter=0
 
 Obstacle=""
 enemies=""
+player=""
 
 [input]
 
@@ -70,5 +71,6 @@ Quit={
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 anti_aliasing/quality/msaa_2d=2
+environment/defaults/default_clear_color=Color(0.13447893, 0.032182526, 0.008385, 1)
 environment/quality/msaa_2d=2
 environment/stretch/mode="canvas_items"

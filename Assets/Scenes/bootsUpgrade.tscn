@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://5gjd1c07ehlh"]
+
+[ext_resource type="Texture2D" uid="uid://iwxr3f3w4oi1" path="res://Assets/Sprites/bootsSpeed.png" id="1_0u5f7"]
+[ext_resource type="Script" uid="uid://bfrogcgk8xti5" path="res://Scripts/boots_upgrade.gd" id="1_vwx2u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0u5f7"]
+radius = 245.50764
+
+[node name="StaticBody2D" type="Area2D" unique_id=990945858]
+script = ExtResource("1_vwx2u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=468009707]
+texture = ExtResource("1_0u5f7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034923613]
+shape = SubResource("CircleShape2D_0u5f7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
