@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+enemies=""
+
 [input]
 
 shoot={
