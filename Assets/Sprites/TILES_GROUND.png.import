@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boxjmg7wropnd"
-path="res://.godot/imported/gun.PNG-ba0aaeaf3ddf202659b4e33c7f406a06.ctex"
+uid="uid://baqf5nx5rocuc"
+path="res://.godot/imported/TILES_GROUND.png-926539d2ee34ce86ebbe0ce771efb0f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/gun.PNG"
-dest_files=["res://.godot/imported/gun.PNG-ba0aaeaf3ddf202659b4e33c7f406a06.ctex"]
+source_file="res://Assets/Sprites/TILES_GROUND.png"
+dest_files=["res://.godot/imported/TILES_GROUND.png-926539d2ee34ce86ebbe0ce771efb0f5.ctex"]
 
 [params]
 

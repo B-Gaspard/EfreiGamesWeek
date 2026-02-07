@@ -6,10 +6,13 @@ var score := 0
 
 func _on_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate()
-	enemy.global_position = player.global_position
-	while enemy.global_position.distance_squared_to(player.global_position) < 10000:
-		enemy.global_position.x = randi_range(0, get_viewport_rect().size.x)
-		enemy.global_position.y = randi_range(0, get_viewport_rect().size.y)
+
+	var angle = randf() * TAU
+	var distance = randf_range(200, 400)
+
+	var offset = Vector2.RIGHT.rotated(angle) * distance
+	enemy.global_position = player.global_position + offset
+
 	add_child(enemy)
 
 func _on_enemy_died():
