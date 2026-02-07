@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv8ie"]
-size = Vector2(30, 27)
+size = Vector2(23, 19)
 
 [sub_resource type="GDScript" id="GDScript_7dd06"]
 script/source = "extends CollisionShape2D
@@ -31,14 +31,13 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="Gradient" id="Gradient_7dd06"]
-offsets = PackedFloat32Array(0.125, 0.7)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_38rej"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.14182693, 0.5456731)
+colors = PackedColorArray(1, 1, 1, 1, 0.05810398, 0.05810398, 0.05810398, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_38rej"]
-gradient = SubResource("Gradient_7dd06")
-width = 350
-height = 350
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t1xgp"]
+gradient = SubResource("Gradient_38rej")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
@@ -51,18 +50,23 @@ scale = Vector2(0.5, 0.5)
 zoom = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1338188134]
-light_mask = 2
 texture_filter = 1
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_uc036")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1766223154]
-position = Vector2(-1, -0.5)
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_dv8ie")
 script = SubResource("GDScript_7dd06")
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=399258166]
-position = Vector2(-6.556511e-07, 0)
-scale = Vector2(1.71875, 1.65625)
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=225022518]
+show_behind_parent = true
+position = Vector2(-0.5, -1)
+scale = Vector2(24.921875, 16.71875)
+color = Color(0.965481, 0.9296029, 0.4175406, 1)
+energy = 0.2
+range_z_min = -512
 shadow_enabled = true
-texture = SubResource("GradientTexture2D_38rej")
+shadow_filter = 1
+shadow_filter_smooth = 1.0
+texture = SubResource("GradientTexture2D_t1xgp")

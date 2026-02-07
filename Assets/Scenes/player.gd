@@ -1,9 +1,10 @@
 extends CharacterBody2D
-const SPEED = 1200
+const SPEED = 400
 
 
 func _process(delta: float) -> void:
-	look_at(get_global_mouse_position())
+	$AnimatedSprite2D.look_at(get_global_mouse_position())
+	$AnimatedSprite2D.rotate(PI/2)
 	
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()

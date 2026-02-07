@@ -9,6 +9,7 @@ size = Vector2(127, 126)
 polygon = PackedVector2Array(66, -64, 64, 62, -64, 63, -64, -66)
 
 [node name="StaticBody2D" type="StaticBody2D" unique_id=1032467333]
+scale = Vector2(0.25, 0.25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2069993360]
 position = Vector2(-0.5, -1)
