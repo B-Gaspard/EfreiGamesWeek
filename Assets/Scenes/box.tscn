@@ -20,4 +20,6 @@ modulate = Color(0.75686276, 0.3019608, 1, 1)
 texture = ExtResource("1_eb7ec")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=699720160]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 occluder = SubResource("OccluderPolygon2D_eb7ec")
