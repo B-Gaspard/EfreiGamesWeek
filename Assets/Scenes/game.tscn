@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cedh1krwt6kn5"]
 
-[ext_resource type="PackedScene" uid="uid://bm4qakp30owd3" path="res://Assets/Scenes/CA_TIRE_A_BALLE.tscn" id="1_nbu75"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/player.tscn" id="1_nbu75"]
 [ext_resource type="Script" uid="uid://bis5k0ewree0o" path="res://Scripts/game.gd" id="1_pfbgl"]
+[ext_resource type="PackedScene" uid="uid://75pqch2wii7o" path="res://Assets/Scenes/Map1.tscn" id="3_lcp10"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nbu75"]
 normal = Vector2(-0.030597912, 0.9995318)
@@ -27,23 +28,25 @@ scale = Vector2(2, 2)
 [node name="Walls" type="StaticBody2D" parent="." unique_id=512049304]
 
 [node name="Top" type="CollisionShape2D" parent="Walls" unique_id=1781718539]
-position = Vector2(518, 0)
+position = Vector2(520, 2)
 shape = SubResource("WorldBoundaryShape2D_nbu75")
 
 [node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=1995063143]
-position = Vector2(0, 19)
+position = Vector2(533, -58)
 shape = SubResource("WorldBoundaryShape2D_pfbgl")
 
 [node name="Left" type="CollisionShape2D" parent="Walls" unique_id=848218069]
-position = Vector2(4, 178)
+position = Vector2(70, 178)
 shape = SubResource("WorldBoundaryShape2D_lcp10")
 
 [node name="Right" type="CollisionShape2D" parent="Walls" unique_id=168080830]
-position = Vector2(1, 164)
+position = Vector2(-123, 164)
 shape = SubResource("WorldBoundaryShape2D_pb48a")
 
 [node name="Timer" type="Timer" parent="." unique_id=1049813788]
 wait_time = 0.5
 autostart = true
+
+[node name="Node2D" parent="." unique_id=637391021 instance=ExtResource("3_lcp10")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

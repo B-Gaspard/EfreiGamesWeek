@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player = $/root/Game/Player
+@onready var player = $/root/World/Player
 
 const SPEED = 100
 

@@ -1,26 +1,69 @@
 [gd_scene format=3 uid="uid://bj58y1elnnkby"]
 
+[ext_resource type="Script" uid="uid://b8300d5om76hk" path="res://Assets/Scenes/world.gd" id="1_iacna"]
 [ext_resource type="PackedScene" uid="uid://d0cl8vifjjafg" path="res://Assets/Scenes/box.tscn" id="2_iacna"]
 [ext_resource type="PackedScene" uid="uid://bkxkpciwawmfd" path="res://Assets/Scenes/player.tscn" id="2_vost8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_pfv4s"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iacna"]
+normal = Vector2(-0.030597912, 0.9995318)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uc036"]
+distance = -518.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dv8ie"]
+normal = Vector2(1, 0)
+distance = -4.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pfv4s"]
+normal = Vector2(-1, 0)
+distance = -962.0
+
 [node name="World" type="Node2D" unique_id=1741926370]
+script = ExtResource("1_iacna")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1426720472]
-modulate = Color(1, 0.85, 0.85, 1)
+modulate = Color(0.06666667, 0.11372549, 0.2901961, 1)
 z_index = -1
 position = Vector2(378, 502)
 scale = Vector2(6787.0005, 4910)
 mesh = SubResource("QuadMesh_pfv4s")
 
 [node name="StaticBody2D" parent="." unique_id=1032467333 instance=ExtResource("2_iacna")]
-position = Vector2(-122, -58)
+position = Vector2(-77, 106)
 
 [node name="StaticBody2D2" parent="." unique_id=1516613571 instance=ExtResource("2_iacna")]
-position = Vector2(-77, 44)
+position = Vector2(-118, -80)
 
 [node name="StaticBody2D3" parent="." unique_id=639603243 instance=ExtResource("2_iacna")]
 position = Vector2(113, -97)
 
 [node name="Player" parent="." unique_id=1688720327 instance=ExtResource("2_vost8")]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=970072078]
+position = Vector2(-484, -267)
+
+[node name="Top" type="CollisionShape2D" parent="Walls" unique_id=1164597358]
+position = Vector2(518, 0)
+shape = SubResource("WorldBoundaryShape2D_iacna")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=129963887]
+position = Vector2(0, 19)
+shape = SubResource("WorldBoundaryShape2D_uc036")
+
+[node name="Left" type="CollisionShape2D" parent="Walls" unique_id=1007661947]
+position = Vector2(4, 178)
+shape = SubResource("WorldBoundaryShape2D_dv8ie")
+
+[node name="Right" type="CollisionShape2D" parent="Walls" unique_id=1662793293]
+position = Vector2(1, 164)
+shape = SubResource("WorldBoundaryShape2D_pfv4s")
+
+[node name="Timer" type="Timer" parent="." unique_id=2075298249]
+wait_time = 0.5
+autostart = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=967487664]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

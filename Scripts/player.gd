@@ -15,5 +15,5 @@ func _physics_process(delta: float) -> void:
 		var bullet = bullet_scene.instantiate()
 		bullet.global_position = shooty_part.global_position
 		bullet.direction =(get_global_mouse_position() - global_position).normalized()
-		$/root/Game.add_child(bullet)
+		$/root/World.add_child(bullet)
 	move_and_slide()
