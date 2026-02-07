@@ -3,9 +3,22 @@
 [ext_resource type="Script" path="res://Assets/Scenes/world.gd" id="1_iacna"]
 [ext_resource type="PackedScene" uid="uid://d0cl8vifjjafg" path="res://Assets/Scenes/box.tscn" id="2_iacna"]
 [ext_resource type="PackedScene" uid="uid://bkxkpciwawmfd" path="res://Assets/Scenes/player.tscn" id="2_vost8"]
+[ext_resource type="Texture2D" uid="uid://boxjmg7wropnd" path="res://Assets/Sprites/gun.PNG" id="4_dv8ie"]
 [ext_resource type="Texture2D" uid="uid://dq88boc1d0jrm" path="res://Assets/Sprites/WALLS.png" id="4_uc036"]
+[ext_resource type="Script" uid="uid://6wu8fxv5xixf" path="res://Assets/Scenes/gun.gd" id="5_pfv4s"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_pfv4s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pfv4s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dv8ie")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uc036"]
 distance = -535.0
@@ -58,6 +71,10 @@ position = Vector2(-118, -80)
 position = Vector2(113, -97)
 
 [node name="Player" parent="." unique_id=1688720327 instance=ExtResource("2_vost8")]
+
+[node name="Gun" type="AnimatedSprite2D" parent="Player" unique_id=1543114539]
+sprite_frames = SubResource("SpriteFrames_pfv4s")
+script = ExtResource("5_pfv4s")
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=970072078]
 position = Vector2(-1, 264)

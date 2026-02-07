@@ -1,58 +1,56 @@
 [gd_scene format=3 uid="uid://bi8runp50rmly"]
 
 [ext_resource type="Script" uid="uid://dj1gs4cnsp107" path="res://Scripts/menu.gd" id="1_sph7x"]
+[ext_resource type="Texture2D" uid="uid://c36dpr8gmvr31" path="res://Assets/Sprites/ecran_titre_idee.png" id="2_pkw8u"]
 
 [node name="Menu" type="Control" unique_id=827064700]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -93.0
+offset_right = 12.0
+offset_bottom = -86.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sph7x")
 
 [node name="StartButton" type="Button" parent="." unique_id=1837426194]
-top_level = true
 layout_mode = 0
-offset_left = 636.0
-offset_top = 398.0
-offset_right = 1269.0
-offset_bottom = 543.0
+offset_left = 515.0
+offset_top = 564.0
+offset_right = 1148.0
+offset_bottom = 709.0
 theme_override_font_sizes/font_size = 100
 text = "Start "
 
 [node name="OptionsButton" type="Button" parent="." unique_id=1323081947]
-top_level = true
 layout_mode = 0
-offset_left = 637.0
-offset_top = 582.0
-offset_right = 1266.0
-offset_bottom = 727.0
+offset_left = 517.0
+offset_top = 772.0
+offset_right = 1146.0
+offset_bottom = 917.0
 theme_override_font_sizes/font_size = 100
 text = "Options"
 
 [node name="ExitButton" type="Button" parent="." unique_id=1299840337]
-top_level = true
 layout_mode = 0
-offset_left = 635.0
-offset_top = 759.0
-offset_right = 1265.0
-offset_bottom = 910.0
+offset_left = 512.0
+offset_top = 968.0
+offset_right = 1142.0
+offset_bottom = 1119.0
 theme_override_font_sizes/font_size = 100
 text = "Quit game"
 
-[node name="Label" type="Label" parent="." unique_id=2004436230]
-top_level = true
+[node name="Background" type="TextureRect" parent="." unique_id=1555030976]
+show_behind_parent = true
 layout_mode = 0
-offset_left = 345.0
-offset_top = 143.0
-offset_right = 1571.0
-offset_bottom = 373.0
-theme_override_colors/font_color = Color(0.7516236, 0.71659595, 0.44597584, 1)
-theme_override_font_sizes/font_size = 100
-text = "Let there be Light"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = -7.0
+offset_top = 104.0
+offset_right = 1969.0
+offset_bottom = 1168.0
+texture = ExtResource("2_pkw8u")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

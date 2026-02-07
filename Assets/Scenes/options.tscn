@@ -13,10 +13,10 @@ script = ExtResource("1_v6ol1")
 
 [node name="BackButton" type="Button" parent="." unique_id=1897908497]
 layout_mode = 0
-offset_left = 553.0
-offset_top = 774.0
-offset_right = 1393.0
-offset_bottom = 989.0
+offset_left = 84.0
+offset_top = 60.0
+offset_right = 924.0
+offset_bottom = 275.0
 theme_override_font_sizes/font_size = 100
 text = "Back"
 
