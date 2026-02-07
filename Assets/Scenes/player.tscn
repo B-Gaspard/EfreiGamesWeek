@@ -1,16 +1,48 @@
 [gd_scene format=3 uid="uid://bkxkpciwawmfd"]
 
 [ext_resource type="Script" uid="uid://0opeglx2dhiw" path="res://Assets/Scenes/player.gd" id="1_38rej"]
-[ext_resource type="Texture2D" uid="uid://dd6h0rriaus0f" path="res://Assets/Sprites/ampoule_5.png" id="2_7dd06"]
+[ext_resource type="Texture2D" uid="uid://dadbr8op2k8sb" path="res://Assets/Sprites/ampoule/ampoule - 1.png" id="2_lerqx"]
+[ext_resource type="Texture2D" uid="uid://cgederck4akha" path="res://Assets/Sprites/ampoule/ampoule - 2.png" id="3_jp3cw"]
+[ext_resource type="Texture2D" uid="uid://d20tt5umo2as1" path="res://Assets/Sprites/ampoule/ampoule - 3.png" id="4_ecf78"]
+[ext_resource type="Texture2D" uid="uid://c2hawuslutyhg" path="res://Assets/Sprites/ampoule/ampoule - 4.png" id="5_vy5gb"]
+[ext_resource type="Texture2D" uid="uid://62y25uydt0r7" path="res://Assets/Sprites/ampoule/ampoule - 5.png" id="6_rsrmw"]
+[ext_resource type="Texture2D" uid="uid://qvs4uquf0yne" path="res://Assets/Sprites/ampoule/ampoule - 6.png" id="7_o8kuu"]
+[ext_resource type="Texture2D" uid="uid://dmr7wta2t7aq8" path="res://Assets/Sprites/ampoule/ampoule - 7.png" id="8_xv74q"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uc036"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qq7w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7dd06")
+"texture": ExtResource("4_ecf78")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("2_lerqx")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_jp3cw")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_ecf78")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_vy5gb")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_rsrmw")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_o8kuu")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_xv74q")
+}],
+"loop": true,
+"name": &"walking",
 "speed": 5.0
 }]
 
@@ -54,7 +86,8 @@ zoom = Vector2(2, 2)
 light_mask = 2
 texture_filter = 1
 rotation = 1.5707964
-sprite_frames = SubResource("SpriteFrames_uc036")
+sprite_frames = SubResource("SpriteFrames_8qq7w")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1766223154]
 position = Vector2(-1, -0.5)

@@ -17,29 +17,32 @@ grow_vertical = 2
 script = ExtResource("1_sph7x")
 
 [node name="StartButton" type="Button" parent="." unique_id=1837426194]
+top_level = true
 layout_mode = 0
-offset_left = 515.0
-offset_top = 564.0
-offset_right = 1148.0
-offset_bottom = 709.0
+offset_left = 581.0
+offset_top = 441.0
+offset_right = 1214.0
+offset_bottom = 586.0
 theme_override_font_sizes/font_size = 100
 text = "Start "
 
 [node name="OptionsButton" type="Button" parent="." unique_id=1323081947]
+top_level = true
 layout_mode = 0
-offset_left = 517.0
-offset_top = 772.0
-offset_right = 1146.0
-offset_bottom = 917.0
+offset_left = 583.0
+offset_top = 649.0
+offset_right = 1212.0
+offset_bottom = 794.0
 theme_override_font_sizes/font_size = 100
 text = "Options"
 
 [node name="ExitButton" type="Button" parent="." unique_id=1299840337]
+top_level = true
 layout_mode = 0
-offset_left = 512.0
-offset_top = 968.0
-offset_right = 1142.0
-offset_bottom = 1119.0
+offset_left = 578.0
+offset_top = 845.0
+offset_right = 1208.0
+offset_bottom = 996.0
 theme_override_font_sizes/font_size = 100
 text = "Quit game"
 

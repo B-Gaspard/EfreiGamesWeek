@@ -4,6 +4,7 @@ const ALIVE = 180
 const COOLDOWN = 10
 
 var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
+@onready var anim = $AnimatedSprite2D
 @onready var shooty_part = $ShootyPart 
 var label_text = "Score : %s"
 var score = 0
@@ -35,9 +36,12 @@ func _physics_process(delta: float) -> void:
 	
 	if move_dir != Vector2.ZERO:
 		velocity = move_dir * SPEED
+		anim.play("walking")
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+		anim.play("idle")
 		
 	if Input.is_action_pressed("shoot"):
 		if cd_count < COOLDOWN:
