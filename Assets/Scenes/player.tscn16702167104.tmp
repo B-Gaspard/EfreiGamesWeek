@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkxkpciwawmfd"]
 
-[ext_resource type="Script" path="res://Assets/Scenes/player.gd" id="1_38rej"]
+[ext_resource type="Script" uid="uid://0opeglx2dhiw" path="res://Assets/Scenes/player.gd" id="1_38rej"]
 [ext_resource type="Texture2D" uid="uid://dd6h0rriaus0f" path="res://Assets/Sprites/ampoule_5.png" id="2_7dd06"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uc036"]
@@ -44,7 +44,6 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
 
 [node name="Player" type="CharacterBody2D" unique_id=1688720327]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_38rej")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2009052384]
