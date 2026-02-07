@@ -21,4 +21,13 @@ func _on_body_entered(body: Node2D) -> void:
 		explosion.global_position = global_position
 		explosion.emitting = true
 		explosion.lifetime = randf_range(0.3, 0.7)
-		$/root/Game.add_child(explosion)
+		$/root/World.add_child(explosion)
+		
+	elif body.is_in_group("Obstacle"):
+		
+		var explosion = explosion_scene.instantiate()
+		explosion.global_position = global_position
+		explosion.emitting = true
+		explosion.lifetime = randf_range(0.3, 0.7)
+		$/root/World.add_child(explosion)
+		queue_free()

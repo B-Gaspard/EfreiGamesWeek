@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cedh1krwt6kn5"]
+[gd_scene format=3 uid="uid://d2vjxr3kkajc8"]
 
-[ext_resource type="PackedScene" uid="uid://bm4qakp30owd3" path="res://Assets/Scenes/player.tscn" id="1_nbu75"]
-[ext_resource type="Script" uid="uid://bis5k0ewree0o" path="res://Scripts/game.gd" id="1_pfbgl"]
+[ext_resource type="PackedScene" uid="uid://bkxkpciwawmfd" path="res://Assets/Scenes/player.tscn" id="1_nbu75"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_pfbgl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nbu75"]
 normal = Vector2(-0.030597912, 0.9995318)

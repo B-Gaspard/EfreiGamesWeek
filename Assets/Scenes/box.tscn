@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://d0cl8vifjjafg"]
 
-[ext_resource type="Texture2D" uid="uid://cmf12racbdrmp" path="res://icon.svg" id="1_eb7ec"]
+[ext_resource type="Texture2D" uid="uid://cxgkaha4c1mj4" path="res://Assets/Sprites/cat3.jpg" id="1_eb7ec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpanj"]
 size = Vector2(127, 126)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eb7ec"]
-polygon = PackedVector2Array(66, -64, 64, 62, -64, 63, -64, -66)
+polygon = PackedVector2Array(64, -64, 64, 62, -64, 63, -64, -64)
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=1032467333]
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1032467333 groups=["Obstacle"]]
 scale = Vector2(0.25, 0.25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2069993360]
@@ -16,7 +16,7 @@ position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_vpanj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1698513316]
-modulate = Color(0.75686276, 0.3019608, 1, 1)
+scale = Vector2(0.18099546, 0.18122977)
 texture = ExtResource("1_eb7ec")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=699720160]
