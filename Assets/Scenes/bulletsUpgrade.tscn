@@ -1,21 +1,23 @@
-[gd_scene format=3 uid="uid://5gjd1c07ehlh"]
+[gd_scene format=3 uid="uid://33ccqyeuscb5"]
 
-[ext_resource type="Texture2D" uid="uid://iwxr3f3w4oi1" path="res://Assets/Sprites/bootsSpeed.png" id="1_0u5f7"]
-[ext_resource type="Script" uid="uid://bfrogcgk8xti5" path="res://Scripts/boots_upgrade.gd" id="1_vwx2u"]
+[ext_resource type="Script" uid="uid://bdtt8drydtoys" path="res://Assets/Scenes/bullets_upgrade.gd" id="1_nawjf"]
+[ext_resource type="Texture2D" uid="uid://boxjmg7wropnd" path="res://Assets/Sprites/gun.PNG" id="2_nawjf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vwx2u"]
 light_mode = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0u5f7"]
-radius = 245.50764
+radius = 299.99997
 
 [node name="StaticBody2D" type="Area2D" unique_id=990945858]
 scale = Vector2(0.05, 0.05)
-script = ExtResource("1_vwx2u")
+script = ExtResource("1_nawjf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=468009707]
 material = SubResource("CanvasItemMaterial_vwx2u")
-texture = ExtResource("1_0u5f7")
+scale = Vector2(0.3, 0.3)
+skew = 0.26529005
+texture = ExtResource("2_nawjf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034923613]
 shape = SubResource("CircleShape2D_0u5f7")

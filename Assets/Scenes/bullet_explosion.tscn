@@ -7,9 +7,9 @@ point_count = 2
 [node name="CPUParticles2D" type="CPUParticles2D" unique_id=989192309]
 emitting = false
 amount = 50
-lifetime = 0.4
+lifetime = 0.25
 one_shot = true
-explosiveness = 0.86
+explosiveness = 0.9
 spread = 180.0
 gravity = Vector2(1.57, 0)
 initial_velocity_min = 95.5
@@ -17,3 +17,4 @@ initial_velocity_max = 200.0
 scale_amount_min = 4.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_3pl2i")
+color = Color(0.6117647, 0.105882354, 0.11764706, 1)

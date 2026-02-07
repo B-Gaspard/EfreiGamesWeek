@@ -1,32 +1,27 @@
 [gd_scene format=3 uid="uid://r726o6myktg4"]
 
 [ext_resource type="Script" uid="uid://ct07bx3nlbhlt" path="res://Scripts/enemy.gd" id="1_atlr2"]
-[ext_resource type="Texture2D" uid="uid://cxgkaha4c1mj4" path="res://Assets/Sprites/cat3.jpg" id="2_e2b7p"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
-size = Vector2(3.9999995, 4.9295764)
+[ext_resource type="Texture2D" uid="uid://dvlhmrh41gnjm" path="res://Assets/Sprites/pile.PNG" id="2_e2b7p"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e2b7p"]
 light_mode = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
+size = Vector2(2.1318703, 2.8197253)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=600584911 groups=["enemies"]]
-scale = Vector2(3, 3)
+scale = Vector2(5, 5)
 script = ExtResource("1_atlr2")
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=428609016]
-position = Vector2(-1.9999999, -1.1920929e-07)
-scale = Vector2(2.5, 2.5)
-color = Color(0.37961093, 0.0098139625, 0.13525334, 1)
-polygon = PackedVector2Array(0, -1, 0, 0.33333334, 0, 1, 2, 0, 1.1901319, -0.40493393)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=761550646]
+material = SubResource("CanvasItemMaterial_e2b7p")
+position = Vector2(-0.041666612, -0.3333335)
+rotation = 1.5707964
+scale = Vector2(0.14843753, 0.10416667)
+texture = ExtResource("2_e2b7p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272042740]
+position = Vector2(1.9868217e-08, -0.33333343)
 rotation = 1.5707964
-scale = Vector2(0.9381434, 0.9457186)
+scale = Vector2(0.93814343, 0.94571865)
 shape = SubResource("RectangleShape2D_e2b7p")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1995137699]
-light_mask = 2
-visibility_layer = 2
-material = SubResource("CanvasItemMaterial_e2b7p")
-scale = Vector2(0.006019014, 0.0053937435)
-texture = ExtResource("2_e2b7p")

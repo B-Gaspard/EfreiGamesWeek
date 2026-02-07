@@ -1,56 +1,9 @@
 [gd_scene format=3 uid="uid://bkxkpciwawmfd"]
 
+[ext_resource type="Script" uid="uid://v03wvs4b5e6y" path="res://Assets/Scenes/player.gd" id="1_38rej"]
 [ext_resource type="Texture2D" uid="uid://dd6h0rriaus0f" path="res://Assets/Sprites/ampoule_5.png" id="2_7dd06"]
-
-[sub_resource type="GDScript" id="GDScript_6cd4h"]
-script/source = "extends CharacterBody2D
-var SPEED = 250
-const ALIVE = 180
-
-var bullet_scene = preload(\"res://Assets/Scenes/bullet.tscn\")
-@onready var shooty_part = $ShootyPart 
-var label_text = \"Score : %s\"
-var score = 0
-
-func add_speed(amount):
-	SPEED += amount
-
-func _init() -> void:
-	pass
-
-func _process(delta: float) -> void:
-	$AnimatedSprite2D.look_at(get_global_mouse_position())
-	$AnimatedSprite2D.rotate(PI/2)
-	
-	score+=1
-	
-	var actual_text = label_text % score
-	$Battery.is_stopped()
-	
-	if Input.is_action_just_pressed(\"Quit\"):
-		get_tree().quit()
-		
-	$BoxContainer/Label.text = actual_text
-	
-
-func _physics_process(delta: float) -> void:
-	var move_dir = Vector2(Input.get_axis(\"Left\",\"Right\"),
-	Input.get_axis(\"Up\",\"Down\"))
-	
-	if move_dir != Vector2.ZERO:
-		velocity = move_dir * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-		
-	if Input.is_action_just_pressed(\"shoot\"):
-		var bullet = bullet_scene.instantiate()
-		bullet.global_position = shooty_part.global_position
-		bullet.direction =(get_global_mouse_position() - global_position).normalized()
-		$/root/World.add_child(bullet)
-	
-	move_and_slide()
-"
+[ext_resource type="Texture2D" uid="uid://boxjmg7wropnd" path="res://Assets/Sprites/gun.PNG" id="2_38rej"]
+[ext_resource type="Script" uid="uid://clnpxej2512ng" path="res://Assets/Scenes/hand.gd" id="2_t1xgp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uc036"]
 animations = [{
@@ -92,8 +45,10 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="GDScript" id="GDScript_23lac"]
+
 [node name="Player" type="CharacterBody2D" unique_id=1688720327 groups=["player"]]
-script = SubResource("GDScript_6cd4h")
+script = ExtResource("1_38rej")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2009052384]
 scale = Vector2(0.5, 0.5)
@@ -102,7 +57,6 @@ zoom = Vector2(2, 2)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1338188134]
 light_mask = 2
 texture_filter = 1
-rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_uc036")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1766223154]
@@ -119,8 +73,6 @@ texture = SubResource("GradientTexture2D_38rej")
 [node name="Battery" type="Timer" parent="." unique_id=195930642]
 wait_time = 30.0
 
-[node name="ShootyPart" type="Node2D" parent="." unique_id=1933130129]
-
 [node name="BoxContainer" type="BoxContainer" parent="." unique_id=589089468]
 offset_left = -480.0
 offset_top = -270.0
@@ -131,3 +83,15 @@ offset_bottom = -230.0
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 uppercase = true
+
+[node name="Hand" type="Node2D" parent="." unique_id=735776528]
+script = ExtResource("2_t1xgp")
+
+[node name="ShootyPart" type="Node2D" parent="Hand" unique_id=1933130129]
+position = Vector2(15, 5)
+script = SubResource("GDScript_23lac")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hand/ShootyPart" unique_id=1224957090]
+position = Vector2(4, -4)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_38rej")
