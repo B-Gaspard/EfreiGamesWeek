@@ -1,24 +1,42 @@
-[gd_scene format=3 uid="uid://bj58y1elnnkby"]
+[gd_scene format=4 uid="uid://bj58y1elnnkby"]
 
-[ext_resource type="Script" uid="uid://b8300d5om76hk" path="res://Assets/Scenes/world.gd" id="1_iacna"]
+[ext_resource type="Script" path="res://Assets/Scenes/world.gd" id="1_iacna"]
 [ext_resource type="PackedScene" uid="uid://d0cl8vifjjafg" path="res://Assets/Scenes/box.tscn" id="2_iacna"]
 [ext_resource type="PackedScene" uid="uid://bkxkpciwawmfd" path="res://Assets/Scenes/player.tscn" id="2_vost8"]
+[ext_resource type="Texture2D" uid="uid://dq88boc1d0jrm" path="res://Assets/Sprites/WALLS.png" id="4_uc036"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_pfv4s"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iacna"]
-normal = Vector2(-0.030597912, 0.9995318)
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uc036"]
-distance = -518.0
+distance = -535.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dv8ie"]
 normal = Vector2(1, 0)
-distance = -4.0
+distance = -103.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pfv4s"]
 normal = Vector2(-1, 0)
-distance = -962.0
+distance = -948.0
+
+[sub_resource type="Environment" id="Environment_iacna"]
+glow_enabled = true
+glow_intensity = 0.73
+glow_hdr_threshold = 0.4
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uc036"]
+texture = ExtResource("4_uc036")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+5:0/0 = 0
+4:0/0 = 0
+3:0/0 = 0
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pfv4s"]
+tile_size = Vector2i(64, 64)
+sources/5 = SubResource("TileSetAtlasSource_uc036")
 
 [node name="World" type="Node2D" unique_id=1741926370]
 script = ExtResource("1_iacna")
@@ -26,7 +44,7 @@ script = ExtResource("1_iacna")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1426720472]
 modulate = Color(0.06666667, 0.11372549, 0.2901961, 1)
 z_index = -1
-position = Vector2(378, 502)
+position = Vector2(354, 757.99994)
 scale = Vector2(6787.0005, 4910)
 mesh = SubResource("QuadMesh_pfv4s")
 
@@ -42,22 +60,23 @@ position = Vector2(113, -97)
 [node name="Player" parent="." unique_id=1688720327 instance=ExtResource("2_vost8")]
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=970072078]
-position = Vector2(-484, -267)
-
-[node name="Top" type="CollisionShape2D" parent="Walls" unique_id=1164597358]
-position = Vector2(518, 0)
-shape = SubResource("WorldBoundaryShape2D_iacna")
+position = Vector2(-1, 264)
 
 [node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=129963887]
-position = Vector2(0, 19)
+position = Vector2(6, -542)
+shape = SubResource("WorldBoundaryShape2D_uc036")
+
+[node name="Top" type="CollisionShape2D" parent="Walls" unique_id=2022164242]
+position = Vector2(0, 14)
+rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_uc036")
 
 [node name="Left" type="CollisionShape2D" parent="Walls" unique_id=1007661947]
-position = Vector2(4, 178)
+position = Vector2(-281, -264)
 shape = SubResource("WorldBoundaryShape2D_dv8ie")
 
 [node name="Right" type="CollisionShape2D" parent="Walls" unique_id=1662793293]
-position = Vector2(1, 164)
+position = Vector2(-563, -266)
 shape = SubResource("WorldBoundaryShape2D_pfv4s")
 
 [node name="Timer" type="Timer" parent="." unique_id=2075298249]
@@ -65,5 +84,12 @@ wait_time = 0.5
 autostart = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=967487664]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=29516639]
+environment = SubResource("Environment_iacna")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=884468235]
+tile_map_data = PackedByteArray("AAAGAP7/BQAAAAAAAAAGAP//BQAAAAAAAAAGAAAABQAAAAAAAAAGAAEABQAAAAAAAAAGAAIABQAAAAAAAAD5//7/BQAAAAAAAAD5////BQAAAAAAAAD5/wAABQAAAAAAAAD5/wEABQAAAAAAAAD5/wIABQAAAAAAAAD5//3/BQACAAAAAAACAPv/BQADAAAAAGADAPv/BQADAAAAAGAEAPv/BQADAAAAAGAFAPv/BQADAAAAAGAFAAQABQADAAAAAFAAAAQABQADAAAAAFACAAQABQADAAAAAFD6/wQABQADAAAAAFD7/wQABQAEAAAAAFD8/wQABQAEAAAAAFD9/wQABQAEAAAAAFD+/wQABQAEAAAAAFD//wQABQAEAAAAAFABAAQABQAEAAAAAFADAAQABQAEAAAAAFAEAAQABQAEAAAAAFAGAAQABQAEAAAAAFD5/wQABQAEAAAAAFD5/wMABQACAAAAAAAGAAMABQACAAAAAAAGAP3/BQACAAAAAAABAPv/BQAFAAAAAAAAAPv/BQAFAAAAAAD///v/BQAFAAAAAAD+//v/BQAFAAAAAAD9//v/BQAFAAAAAAD8//v/BQAFAAAAAAD7//v/BQAFAAAAAAD6//v/BQAFAAAAAAD5//v/BQAFAAAAAAAGAPv/BQAFAAAAAAD5//z/BQACAAAAAAAGAPz/BQACAAAAAAA=")
+tile_set = SubResource("TileSet_pfv4s")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

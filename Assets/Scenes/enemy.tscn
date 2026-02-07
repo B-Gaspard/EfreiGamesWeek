@@ -13,6 +13,12 @@ light_mode = 2
 scale = Vector2(3, 3)
 script = ExtResource("1_atlr2")
 
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=428609016]
+position = Vector2(-1.9999999, -1.1920929e-07)
+scale = Vector2(2.5, 2.5)
+color = Color(0.37961093, 0.0098139625, 0.13525334, 1)
+polygon = PackedVector2Array(0, -1, 0, 0.33333334, 0, 1, 2, 0, 1.1901319, -0.40493393)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272042740]
 rotation = 1.5707964
 scale = Vector2(0.9381434, 0.9457186)

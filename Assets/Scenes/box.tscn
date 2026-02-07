@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0cl8vifjjafg"]
 
-[ext_resource type="Texture2D" uid="uid://cxgkaha4c1mj4" path="res://Assets/Sprites/cat3.jpg" id="1_eb7ec"]
+[ext_resource type="Texture2D" uid="uid://3sndokp4wico" path="res://Assets/Sprites/singlewall.png" id="1_eb7ec"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eb7ec"]
 polygon = PackedVector2Array(-51, -51, 51, -51, 51, 51, -51, 51)
@@ -12,7 +12,8 @@ size = Vector2(102, 102)
 scale = Vector2(0.7543779, 0.76596373)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1738069751]
-scale = Vector2(0.15384616, 0.16504855)
+position = Vector2(0.6628, 4.5895576e-06)
+scale = Vector2(1.5948572, 1.5911328)
 texture = ExtResource("1_eb7ec")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1019824325]
