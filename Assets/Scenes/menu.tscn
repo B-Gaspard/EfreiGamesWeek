@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cw3suhc23irdv"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_sph7x"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/ecran_titre_idee.png" id="2_pkw8u"]
+
+[node name="Menu" type="Control" unique_id=827064700]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sph7x")
+
+[node name="StartButton" type="Button" parent="." unique_id=1837426194]
+top_level = true
+layout_mode = 0
+offset_left = 165.0
+offset_top = 112.0
+offset_right = 310.0
+offset_bottom = 143.0
+text = "Start "
+
+[node name="OptionsButton" type="Button" parent="." unique_id=1323081947]
+top_level = true
+layout_mode = 0
+offset_left = 165.0
+offset_top = 154.0
+offset_right = 311.0
+offset_bottom = 185.0
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="." unique_id=1299840337]
+top_level = true
+layout_mode = 0
+offset_left = 164.0
+offset_top = 195.0
+offset_right = 310.0
+offset_bottom = 226.0
+text = "Quit game"
+
+[node name="Background" type="TextureRect" parent="." unique_id=2136015359]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_pkw8u")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

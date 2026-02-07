@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d4jeadmamxiq5"]
+
+[ext_resource type="Script" path="res://Scripts/options.gd" id="1_v6ol1"]
+
+[sub_resource type="GDScript" id="GDScript_t43rc"]
+script/source = "extends Button
+
+func back_on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Assets/Scenes/Menu.tscn\")
+"
+
+[node name="Options" type="Control" unique_id=501337991]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v6ol1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=893526314]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 269.0
+color = Color(0.057037078, 0.09916825, 0.15007326, 1)
+
+[node name="BackButton" type="Button" parent="." unique_id=122102689]
+top_level = true
+layout_mode = 0
+offset_left = 371.0
+offset_top = 220.0
+offset_right = 467.0
+offset_bottom = 251.0
+text = "Back "
+script = SubResource("GDScript_t43rc")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
