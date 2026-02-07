@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://d2vjxr3kkajc8"]
+[gd_scene format=3 uid="uid://cedh1krwt6kn5"]
 
-[ext_resource type="PackedScene" uid="uid://bkxkpciwawmfd" path="res://Assets/Scenes/player.tscn" id="1_nbu75"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/player.tscn" id="1_nbu75"]
 [ext_resource type="Script" uid="uid://bis5k0ewree0o" path="res://Scripts/game.gd" id="1_pfbgl"]
+[ext_resource type="PackedScene" uid="uid://75pqch2wii7o" path="res://Assets/Scenes/Map1.tscn" id="3_lcp10"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nbu75"]
 normal = Vector2(-0.030597912, 0.9995318)
@@ -45,5 +46,7 @@ shape = SubResource("WorldBoundaryShape2D_pb48a")
 [node name="Timer" type="Timer" parent="." unique_id=1049813788]
 wait_time = 0.5
 autostart = true
+
+[node name="Node2D" parent="." unique_id=637391021 instance=ExtResource("3_lcp10")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
