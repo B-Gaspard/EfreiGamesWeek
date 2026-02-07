@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://r726o6myktg4"]
 
 [ext_resource type="Script" uid="uid://ct07bx3nlbhlt" path="res://Scripts/enemy.gd" id="1_atlr2"]
+[ext_resource type="Texture2D" uid="uid://cxgkaha4c1mj4" path="res://Assets/Sprites/cat3.jpg" id="2_e2b7p"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f23vh"]
-radius = 1.0
-height = 4.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
+size = Vector2(3.9999995, 4.9295764)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e2b7p"]
+light_mode = 2
 
 [node name="Enemy" type="CharacterBody2D" unique_id=600584911 groups=["enemies"]]
 scale = Vector2(3, 3)
@@ -18,4 +21,12 @@ polygon = PackedVector2Array(0, -1, 0, 0.33333334, 0, 1, 2, 0, 1.1901319, -0.404
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272042740]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_f23vh")
+scale = Vector2(0.9381434, 0.9457186)
+shape = SubResource("RectangleShape2D_e2b7p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1995137699]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_e2b7p")
+scale = Vector2(0.006019014, 0.0053937435)
+texture = ExtResource("2_e2b7p")
