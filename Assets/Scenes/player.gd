@@ -1,11 +1,13 @@
 extends CharacterBody2D
 const SPEED = 400
-const ALIVE = 180
+const TTL_MAX = 500
 
 var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
 @onready var shooty_part = $ShootyPart 
-var label_text = "Score : %s"
+var label_text = "Score : %s\nTTL : %s"
 var score = 0
+var light_radius = TTL_MAX
+
 
 func _init() -> void:
 	pass
@@ -15,9 +17,12 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.rotate(PI/2)
 	
 	score+=1
+	light_radius-=8*get_process_delta_time()
 	
-	var actual_text = label_text % score
-	$Battery.is_stopped()
+	var actual_text = label_text % [score,light_radius]
+	
+	$PointLight2D.texture.height = light_radius
+	$PointLight2D.texture.width=$PointLight2D.texture.height
 	
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()
