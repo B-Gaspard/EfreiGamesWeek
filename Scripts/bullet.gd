@@ -16,7 +16,6 @@ func _on_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		emit_signal("ennemy_died")
 		body.queue_free()
 		queue_free()
 		
