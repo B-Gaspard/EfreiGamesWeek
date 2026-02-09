@@ -58,10 +58,12 @@ stretch_mode = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=300475305]
 stream = ExtResource("9_5upas")
+bus = &"MUSIQUE"
 
 [node name="ButtonFX" type="AudioStreamPlayer" parent="." unique_id=1450550249]
 stream = ExtResource("10_ikpnn")
-volume_db = 3.949
+volume_db = 3.5
+bus = &"SFX"
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]

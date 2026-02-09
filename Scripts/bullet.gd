@@ -5,6 +5,7 @@ var boots = preload("res://Assets/Scenes/bootsUpgrade.tscn")
 var guns = preload("res://Assets/Scenes/bulletsUpgrade.tscn")
 signal battery_killed
 signal led_killed
+signal tesla_killed
 
 
 @export var speed := 800.0
@@ -12,16 +13,15 @@ signal led_killed
 
 
 var direction: Vector2 = Vector2.RIGHT
-
-
 const SPEED = 600
+
 func _ready():
 	rotation = direction.angle()
 	
 
-
 func _physics_process(delta):
 		position += direction * speed * delta
+
 func _on_timer_timeout() -> void:
 	queue_free()
 
@@ -34,24 +34,32 @@ func _on_body_entered(body: Node2D) -> void:
 		random_drop()
 		explosion_fx()
 	
-	if body.is_in_group("Battery"):
+	elif body.is_in_group("Battery"):
 		body.queue_free()
 		queue_free()
 		emit_signal("battery_killed",800)
-
 		random_drop()
 		explosion_fx()
 		
+	elif body.is_in_group("Tesla"):
+		body.queue_free()
+		queue_free()
+		emit_signal("tesla_killed",400)
+		random_drop()
+		explosion_fx()
+	
 	elif body.is_in_group("Obstacle"):
 		explosion_fx()
 		queue_free()
 
 
-func _on_battery_killed(points) -> void:
-	player.score+=points
+func _on_battery_killed(_points) -> void:
 	$/root/World/Player.life += 50
 
-func _on_led_killed(points) -> void:
+func _on_led_killed(_points) -> void:
+	$/root/World/Player.life += 50
+	
+func _on_tesla_killed(_points) -> void:
 	$/root/World/Player.life += 50
 
 func random_drop():

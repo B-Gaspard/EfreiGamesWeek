@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cnhb7cn46a8tf"]
+
+[ext_resource type="Script" uid="uid://qjm1d088r2lh" path="res://Scripts/lightning.gd" id="1_6lv2k"]
+[ext_resource type="Texture2D" uid="uid://ki4mwm0lym7m" path="res://Assets/Sprites/LIGHTBOLD.png" id="1_oj5a7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lv2k"]
+size = Vector2(6, 8)
+
+[node name="Node2D" type="CharacterBody2D" unique_id=304416389 groups=["Lightning"]]
+scale = Vector2(2.6800022, 2.3600001)
+script = ExtResource("1_6lv2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2130875909]
+texture = ExtResource("1_oj5a7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=987828060]
+shape = SubResource("RectangleShape2D_6lv2k")
+
+[node name="Timer" type="Timer" parent="." unique_id=1378707224]

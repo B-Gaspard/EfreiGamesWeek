@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b2pofgbjthqj8"]
+
+[ext_resource type="Script" uid="uid://btpv323kww8tl" path="res://Scripts/tesla.gd" id="1_5nid5"]
+[ext_resource type="Texture2D" uid="uid://cvnd0bp0mht2e" path="res://Assets/Sprites/TESLA.png" id="1_t06r2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
+size = Vector2(2.258051, 1.2688763)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5nid5"]
+light_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nid5"]
+atlas = ExtResource("1_t06r2")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfd6e"]
+atlas = ExtResource("1_t06r2")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk8p0"]
+atlas = ExtResource("1_t06r2")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gelmm"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_5nid5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfd6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk8p0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tesla" type="CharacterBody2D" unique_id=600584911 groups=["Tesla"]]
+scale = Vector2(21.526442, 21.771524)
+script = ExtResource("1_5nid5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272042740]
+position = Vector2(2.7105693e-09, 0.059187718)
+rotation = 1.5707964
+scale = Vector2(0.9381433, 0.9457186)
+shape = SubResource("RectangleShape2D_e2b7p")
+
+[node name="FireCooldown" type="Timer" parent="." unique_id=1313007279]
+wait_time = 5.0
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1422734077]
+light_mask = 3
+material = SubResource("CanvasItemMaterial_5nid5")
+scale = Vector2(0.037499998, 0.031249998)
+sprite_frames = SubResource("SpriteFrames_gelmm")
+frame_progress = 0.5262836
+
+[connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]

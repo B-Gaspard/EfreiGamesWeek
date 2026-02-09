@@ -7,13 +7,14 @@
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
-size = Vector2(2.1318703, 2.8197253)
+size = Vector2(2.258051, 1.2688763)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=600584911 groups=["Battery"]]
 scale = Vector2(5, 5)
 script = ExtResource("1_atlr2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=761550646]
+visibility_layer = 2
 material = SubResource("CanvasItemMaterial_e2b7p")
 position = Vector2(-0.041666612, -0.3333335)
 rotation = 1.5707964

@@ -94,7 +94,6 @@ func _physics_process(delta: float) -> void:
 			# Muzzle offset so bullets don't overlap
 			var muzzle_offset = Vector2(barrel_muzzle_distance, 0).rotated(base_angle + deg_to_rad(angle_offset_deg))
 			bullet.global_position = shooty_part.global_position + muzzle_offset
-
 			bullet.direction = dir
 			$/root/World.add_child(bullet)
 			$FireCooldown.start()
@@ -104,7 +103,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if (body.is_in_group("Battery") or body.is_in_group("LED")) and actionnable:
+	if (body.is_in_group("Battery") or body.is_in_group("LED") or body.is_in_group("Lightning")) and actionnable:
 		lose()
 	
 func lose():
