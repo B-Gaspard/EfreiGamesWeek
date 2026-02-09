@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cc7iaiw544vsn"]
+
+[ext_resource type="Script" uid="uid://c7a3uxkjo54ar" path="res://Scripts/led.gd" id="1_1paia"]
+[ext_resource type="Texture2D" uid="uid://ddxy7fwrfyun3" path="res://Assets/Sprites/LED_PPL.png" id="2_g3613"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3dw"]
+
+[sub_resource type="Gradient" id="Gradient_x1fwp"]
+offsets = PackedFloat32Array(0.30528846, 0.5264423)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nq3dw"]
+gradient = SubResource("Gradient_x1fwp")
+width = 75
+height = 75
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1414257410 groups=["LED"]]
+script = ExtResource("1_1paia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1548763820]
+shape = SubResource("RectangleShape2D_nq3dw")
+
+[node name="Timer" type="Timer" parent="." unique_id=867219170]
+wait_time = 0.7
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=189485636]
+light_mask = 4
+texture = ExtResource("2_g3613")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=906103267]
+color = Color(1, 0, 0, 1)
+energy = 2.0
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_nq3dw")

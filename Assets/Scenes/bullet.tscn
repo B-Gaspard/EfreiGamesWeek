@@ -26,5 +26,4 @@ position = Vector2(1, 0)
 rotation = 1.5707964
 texture = ExtResource("2_ry04a")
 
-[connection signal="ennemy_died" from="." to="." method="_on_ennemy_died"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

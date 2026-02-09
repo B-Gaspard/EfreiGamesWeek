@@ -8,6 +8,7 @@ var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
 var label_text = "Score : %s\nTTL: %s"
 var score = 0
 var actionnable = true
+var can_shoot = true
 
 # Start with 1 barrel straight ahead
 var gun_angles: Array[float] = [0.0]
@@ -37,7 +38,7 @@ func add_speed(amount):
 	$BootFX.play()
 
 # ---- PROCESS LOOP ----
-var life = 500.00
+var life = 1000.00
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("reSTART") :
 		get_tree().reload_current_scene()
@@ -45,7 +46,7 @@ func _process(delta: float) -> void:
 	if actionnable:
 		score += 1
 	else :
-		life-=670*get_process_delta_time()
+		life-=500*get_process_delta_time()
 		
 	var actual_text = label_text % [score,$PointLight2D.texture.width]
 	
@@ -74,7 +75,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	# Shooting
-	if Input.is_action_just_pressed("shoot") and actionnable:
+	if Input.is_action_just_pressed("shoot") and actionnable and $FireCooldown.is_stopped():
 		$GunAudio.play()
 		var base_dir = (get_global_mouse_position() - shooty_part.global_position).normalized()
 		var base_angle = base_dir.angle()
@@ -91,15 +92,17 @@ func _physics_process(delta: float) -> void:
 
 			bullet.direction = dir
 			$/root/World.add_child(bullet)
+			
+			$FireCooldown.start()
 
 	if actionnable:
 		move_and_slide()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemies") and actionnable:
+	if (body.is_in_group("Battery") or body.is_in_group("LED")) and actionnable:
 		lose()
 	
 func lose():
-	actionnable = false
+	actionnable = true
 	$DeathFX.play()

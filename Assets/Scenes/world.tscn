@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5gjd1c07ehlh" path="res://Assets/Scenes/bootsUpgrade.tscn" id="5_dv8ie"]
 [ext_resource type="PackedScene" uid="uid://33ccqyeuscb5" path="res://Assets/Scenes/bulletsUpgrade.tscn" id="6_pfv4s"]
 [ext_resource type="Texture2D" uid="uid://baqf5nx5rocuc" path="res://Assets/Sprites/TILES_GROUND.png" id="7_31mi3"]
+[ext_resource type="PackedScene" uid="uid://cc7iaiw544vsn" path="res://Assets/Scenes/LED.tscn" id="9_0uscc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31mi3"]
 texture = ExtResource("7_31mi3")
@@ -145,5 +146,8 @@ position = Vector2(-186, 10)
 
 [node name="StaticBody2D12" parent="." unique_id=1811444150 instance=ExtResource("6_pfv4s")]
 position = Vector2(-181, -53.999996)
+
+[node name="CharacterBody2D" parent="." unique_id=1414257410 instance=ExtResource("9_0uscc")]
+position = Vector2(0, 111)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

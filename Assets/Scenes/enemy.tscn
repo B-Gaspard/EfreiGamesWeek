@@ -9,7 +9,7 @@ light_mode = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
 size = Vector2(2.1318703, 2.8197253)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=600584911 groups=["enemies"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=600584911 groups=["Battery"]]
 scale = Vector2(5, 5)
 script = ExtResource("1_atlr2")
 
@@ -20,7 +20,7 @@ rotation = 1.5707964
 scale = Vector2(0.14843753, 0.10416667)
 texture = ExtResource("2_e2b7p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272042740]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272042740 groups=["Battery"]]
 position = Vector2(1.9868217e-08, -0.33333343)
 rotation = 1.5707964
 scale = Vector2(0.93814343, 0.94571865)
