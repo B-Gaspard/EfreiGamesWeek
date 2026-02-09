@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-var SPEED = 80
+var SPEED = 100
 const ALIVE = 180
+const COOLDOWN = 7
 
 var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
 @onready var shooty_part = $Hand/ShootyPart 
@@ -9,6 +10,7 @@ var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
 var label_text = "Score : %s\nTTL: %s"
 var score = 0
 var actionnable = true
+var cooldown = 0 
 
 # Start with 1 barrel straight ahead
 var gun_angles: Array[float] = [0.0]
@@ -40,6 +42,7 @@ func add_speed(amount):
 # ---- PROCESS LOOP ----
 var life = 500.00
 func _process(delta: float) -> void:
+	print(cooldown)
 	if Input.is_action_just_pressed("reSTART") :
 		get_tree().reload_current_scene()
 	
@@ -78,24 +81,27 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	# Shooting
-	if Input.is_action_just_pressed("shoot") and actionnable:
-		$GunAudio.play()
-		var base_dir = (get_global_mouse_position() - shooty_part.global_position).normalized()
-		var base_angle = base_dir.angle()
+	if Input.is_action_pressed("shoot") and actionnable:
+		if cooldown >= COOLDOWN:
+			cooldown = 0
+			$GunAudio.play()
+			var base_dir = (get_global_mouse_position() - shooty_part.global_position).normalized()
+			var base_angle = base_dir.angle()
 
-		for angle_offset_deg in gun_angles:
-			var bullet = bullet_scene.instantiate()
-			
-			# Direction vector
-			var dir = Vector2.from_angle(base_angle + deg_to_rad(angle_offset_deg))
+			for angle_offset_deg in gun_angles:
+				var bullet = bullet_scene.instantiate()
+				
+				# Direction vector
+				var dir = Vector2.from_angle(base_angle + deg_to_rad(angle_offset_deg))
 
-			# Muzzle offset so bullets don't overlap
-			var muzzle_offset = Vector2(barrel_muzzle_distance, 0).rotated(base_angle + deg_to_rad(angle_offset_deg))
-			bullet.global_position = shooty_part.global_position + muzzle_offset
+				# Muzzle offset so bullets don't overlap
+				var muzzle_offset = Vector2(barrel_muzzle_distance, 0).rotated(base_angle + deg_to_rad(angle_offset_deg))
+				bullet.global_position = shooty_part.global_position + muzzle_offset
 
-			bullet.direction = dir
-			$/root/World.add_child(bullet)
-
+				bullet.direction = dir
+				$/root/World.add_child(bullet)
+		else:
+			cooldown += 1
 	if actionnable:
 		move_and_slide()
 

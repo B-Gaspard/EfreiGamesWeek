@@ -134,6 +134,7 @@ light_mask = 2
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ytees")
 animation = &"dead"
+frame_progress = 0.95656174
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1766223154]
 position = Vector2(-1, -0.5)
