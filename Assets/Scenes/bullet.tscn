@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://78tpjsxot3e2" path="res://Scripts/bullet.gd" id="1_gbjqq"]
 [ext_resource type="Texture2D" uid="uid://btk12mqcon36o" path="res://Assets/Sprites/bullet.PNG" id="2_ry04a"]
+[ext_resource type="AudioStream" uid="uid://b8r35bulxfnrd" path="res://Assets/Sounds/pilemort.mp3" id="3_7gn42"]
+[ext_resource type="AudioStream" uid="uid://dg4sopkdnhwbg" path="res://Assets/Sounds/diodemort.mp3" id="4_tlll3"]
+[ext_resource type="AudioStream" uid="uid://bso0snfc24xjp" path="res://Assets/Sounds/disjunkhit.mp3" id="5_08duh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljrsq"]
 
@@ -9,6 +12,7 @@
 script = ExtResource("1_gbjqq")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1392813516]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=754073390]
 shape = SubResource("CircleShape2D_ljrsq")
@@ -26,7 +30,37 @@ position = Vector2(1, 0)
 rotation = 1.5707964
 texture = ExtResource("2_ry04a")
 
+[node name="PileDeathFX" type="AudioStreamPlayer2D" parent="." unique_id=608741622]
+stream = ExtResource("3_7gn42")
+volume_db = 15.0
+bus = &"SFX"
+
+[node name="DiodeDeathFX" type="AudioStreamPlayer2D" parent="." unique_id=1245765844]
+stream = ExtResource("4_tlll3")
+volume_db = 15.0
+pitch_scale = 1.4
+bus = &"SFX"
+
+[node name="TeslaDeathFX" type="AudioStreamPlayer2D" parent="." unique_id=1422293870]
+stream = ExtResource("3_7gn42")
+volume_db = 15.0
+pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="DisjunkHitFX" type="AudioStreamPlayer2D" parent="." unique_id=1877103562]
+stream = ExtResource("5_08duh")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="DisJunkDeathFX" type="AudioStreamPlayer2D" parent="." unique_id=397231526]
+bus = &"SFX"
+
 [connection signal="battery_killed" from="." to="." method="_on_battery_killed"]
 [connection signal="led_killed" from="." to="." method="_on_led_killed"]
 [connection signal="tesla_killed" from="." to="." method="_on_tesla_killed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="finished" from="PileDeathFX" to="." method="_on_pile_death_fx_finished"]
+[connection signal="finished" from="DiodeDeathFX" to="." method="_on_diode_death_fx_finished"]
+[connection signal="finished" from="TeslaDeathFX" to="." method="_on_tesla_death_fx_finished"]
+[connection signal="finished" from="DisjunkHitFX" to="." method="_on_disjunk_hit_fx_finished"]
+[connection signal="finished" from="DisJunkDeathFX" to="." method="_on_dis_junk_death_fx_finished"]

@@ -14,7 +14,6 @@ scale = Vector2(5, 5)
 script = ExtResource("1_atlr2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=761550646]
-visibility_layer = 2
 material = SubResource("CanvasItemMaterial_e2b7p")
 position = Vector2(-0.041666612, -0.3333335)
 rotation = 1.5707964

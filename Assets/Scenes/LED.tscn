@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3dw"]
 
 [sub_resource type="Gradient" id="Gradient_x1fwp"]
-offsets = PackedFloat32Array(0.30528846, 0.5264423)
+offsets = PackedFloat32Array(0.37740386, 0.5264423)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nq3dw"]

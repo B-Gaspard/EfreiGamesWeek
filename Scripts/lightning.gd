@@ -1,5 +1,5 @@
 extends Node2D
-const SPEED = 70
+const SPEED = 100
 @onready var player = $/root/World/Player
 
 # Called when the node enters the scene tree for the first time.

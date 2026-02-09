@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="Gradient" id="Gradient_7dd06"]
-offsets = PackedFloat32Array(0.54086536, 0.5456731)
+offsets = PackedFloat32Array(0.5456731, 0.55528843)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_38rej"]
@@ -142,6 +142,7 @@ shape = SubResource("RectangleShape2D_dv8ie")
 script = SubResource("GDScript_7dd06")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=399258166]
+light_mask = 512
 position = Vector2(-6.556511e-07, 0)
 energy = 2.0
 shadow_enabled = true
@@ -169,15 +170,19 @@ shape = SubResource("RectangleShape2D_t1xgp")
 stream = ExtResource("5_vy5gb")
 volume_db = 24.0
 pitch_scale = 0.9
+bus = &"SFX"
 
 [node name="CockFX" type="AudioStreamPlayer" parent="." unique_id=1652930092]
 stream = ExtResource("5_jp3cw")
+bus = &"SFX"
 
 [node name="BootFX" type="AudioStreamPlayer" parent="." unique_id=619154730]
 stream = ExtResource("6_ecf78")
+bus = &"SFX"
 
 [node name="GunAudio" type="AudioStreamPlayer" parent="." unique_id=817856668]
 stream = SubResource("AudioStreamRandomizer_rsrmw")
+bus = &"SFX"
 script = ExtResource("8_vy5gb")
 
 [node name="FireCooldown" type="Timer" parent="." unique_id=2082937838]

@@ -6,6 +6,7 @@ var guns = preload("res://Assets/Scenes/bulletsUpgrade.tscn")
 signal battery_killed
 signal led_killed
 signal tesla_killed
+var mocked = false
 
 
 @export var speed := 800.0
@@ -27,30 +28,37 @@ func _on_timer_timeout() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("LED"):
-		body.queue_free()
-		queue_free()
-		emit_signal("led_killed",800)
-		random_drop()
-		explosion_fx()
-	
-	elif body.is_in_group("Battery"):
-		body.queue_free()
-		queue_free()
-		emit_signal("battery_killed",800)
-		random_drop()
-		explosion_fx()
+	if mocked == false:
+		if body.is_in_group("LED"):
+			mockup($DiodeDeathFX)
+			body.queue_free()
+			emit_signal("led_killed",800)
+			random_drop()
+			explosion_fx()
+			
+		elif body.is_in_group("Obstacle"):
+			explosion_fx()
+			queue_free()
 		
-	elif body.is_in_group("Tesla"):
-		body.queue_free()
-		queue_free()
-		emit_signal("tesla_killed",400)
-		random_drop()
-		explosion_fx()
-	
-	elif body.is_in_group("Obstacle"):
-		explosion_fx()
-		queue_free()
+		elif body.is_in_group("Battery"):
+			mockup($PileDeathFX)
+			body.queue_free()
+			emit_signal("battery_killed",800)
+			random_drop()
+			explosion_fx()
+			
+		elif body.is_in_group("Tesla"):
+			mockup($TeslaDeathFX)
+			body.queue_free()
+			emit_signal("tesla_killed",400)
+			random_drop()
+			explosion_fx()
+		
+		elif body.is_in_group("Disjunktor"):
+			mockup($DisjunkHitFX)
+			explosion_fx()
+		
+		
 
 
 func _on_battery_killed(_points) -> void:
@@ -78,3 +86,24 @@ func explosion_fx():
 		explosion.emitting = true
 		explosion.lifetime = randf_range(0.3, 0.7)
 		$/root/World.add_child(explosion)
+
+func mockup(audio: AudioStreamPlayer2D):
+	mocked=true
+	$Sprite2D.visible=false
+	audio.play()
+
+
+func _on_pile_death_fx_finished() -> void:
+	queue_free()
+
+func _on_diode_death_fx_finished() -> void:
+	queue_free()
+
+func _on_tesla_death_fx_finished() -> void:
+	queue_free()
+
+func _on_disjunk_hit_fx_finished() -> void:
+	queue_free()
+
+func _on_dis_junk_death_fx_finished() -> void:
+	queue_free()

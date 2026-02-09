@@ -60,6 +60,9 @@ func _process(delta: float) -> void:
 	$Camera2D.zoom.x += targetzoom
 	$Camera2D.zoom.y += targetzoom
 	
+	if life<=1 and actionnable:
+		lose()
+	
 	$PointLight2D.texture.width = life
 	$PointLight2D.texture.height= life
 	
@@ -104,6 +107,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Battery") or body.is_in_group("LED") or body.is_in_group("Lightning")) and actionnable:
+		body.queue_free()
 		lose()
 	
 func lose():

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cvnd0bp0mht2e" path="res://Assets/Sprites/TESLA.png" id="1_t06r2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
-size = Vector2(2.258051, 1.2688763)
+size = Vector2(10.633764, 11.238449)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5nid5"]
 light_mode = 2
@@ -45,18 +45,20 @@ script = ExtResource("1_5nid5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272042740]
 position = Vector2(2.7105693e-09, 0.059187718)
 rotation = 1.5707964
-scale = Vector2(0.9381433, 0.9457186)
+scale = Vector2(0.15799189, 0.057869464)
 shape = SubResource("RectangleShape2D_e2b7p")
 
 [node name="FireCooldown" type="Timer" parent="." unique_id=1313007279]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1422734077]
-light_mask = 3
+light_mask = 7
+visibility_layer = 7
 material = SubResource("CanvasItemMaterial_5nid5")
 scale = Vector2(0.037499998, 0.031249998)
 sprite_frames = SubResource("SpriteFrames_gelmm")
+autoplay = "default"
 frame_progress = 0.5262836
 
 [connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]
