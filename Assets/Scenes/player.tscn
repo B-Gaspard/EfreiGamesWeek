@@ -1,25 +1,70 @@
-[gd_scene format=3 uid="uid://bkxkpciwawmfd"]
+[gd_scene format=3 uid="uid://bkp7n0q68pkiq"]
 
-[ext_resource type="Script" uid="uid://v03wvs4b5e6y" path="res://Assets/Scenes/player.gd" id="1_38rej"]
-[ext_resource type="Texture2D" uid="uid://dd6h0rriaus0f" path="res://Assets/Sprites/ampoule_5.png" id="2_7dd06"]
+[ext_resource type="Script" uid="uid://v03wvs4b5e6y" path="res://Scripts/player.gd" id="1_38rej"]
 [ext_resource type="Texture2D" uid="uid://boxjmg7wropnd" path="res://Assets/Sprites/gun.PNG" id="2_38rej"]
-[ext_resource type="Script" uid="uid://clnpxej2512ng" path="res://Assets/Scenes/hand.gd" id="2_t1xgp"]
+[ext_resource type="Texture2D" uid="uid://b3c5ttnp0ubow" path="res://Assets/Sprites/ampoule_petee.PNG" id="2_aq5fl"]
+[ext_resource type="Script" uid="uid://clnpxej2512ng" path="res://Scripts/hand.gd" id="2_t1xgp"]
+[ext_resource type="Texture2D" uid="uid://d20tt5umo2as1" path="res://Assets/Sprites/ampoule/ampoule - 3.png" id="2_yrbh7"]
+[ext_resource type="Texture2D" uid="uid://dadbr8op2k8sb" path="res://Assets/Sprites/ampoule/ampoule - 1.png" id="3_aq5fl"]
+[ext_resource type="Texture2D" uid="uid://dpag6h8bes0qi" path="res://Assets/Sprites/ampoule_vide.PNG" id="3_xka8r"]
+[ext_resource type="Texture2D" uid="uid://cgederck4akha" path="res://Assets/Sprites/ampoule/ampoule - 2.png" id="4_xka8r"]
 [ext_resource type="AudioStream" uid="uid://brd3spjk1vcik" path="res://Assets/Sounds/cock.mp3" id="5_jp3cw"]
 [ext_resource type="AudioStream" uid="uid://bd08wt3275f48" path="res://Assets/Sounds/gunshot1.mp3" id="5_lerqx"]
+[ext_resource type="Texture2D" uid="uid://c2hawuslutyhg" path="res://Assets/Sprites/ampoule/ampoule - 4.png" id="5_ncqey"]
 [ext_resource type="AudioStream" uid="uid://ceannfgsiyqtn" path="res://Assets/Sounds/lamortdejohnpoole.mp3" id="5_vy5gb"]
 [ext_resource type="AudioStream" uid="uid://2oq3v512xh44" path="res://Assets/Sounds/boots.mp3" id="6_ecf78"]
 [ext_resource type="AudioStream" uid="uid://boq461ftooot3" path="res://Assets/Sounds/gunshot2.mp3" id="6_jp3cw"]
+[ext_resource type="Texture2D" uid="uid://62y25uydt0r7" path="res://Assets/Sprites/ampoule/ampoule - 5.png" id="6_qnw5g"]
+[ext_resource type="Texture2D" uid="uid://qvs4uquf0yne" path="res://Assets/Sprites/ampoule/ampoule - 6.png" id="7_dsi02"]
 [ext_resource type="AudioStream" uid="uid://dgmwbyqps8aj3" path="res://Assets/Sounds/gunshot3.mp3" id="7_ecf78"]
-[ext_resource type="Script" uid="uid://djmtvxb5inihc" path="res://Assets/Scenes/audio_stream_player.gd" id="8_vy5gb"]
+[ext_resource type="Texture2D" uid="uid://dmr7wta2t7aq8" path="res://Assets/Sprites/ampoule/ampoule - 7.png" id="8_eprmk"]
+[ext_resource type="Script" uid="uid://djmtvxb5inihc" path="res://Scripts/audio_stream_player.gd" id="8_vy5gb"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_uc036"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytees"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_7dd06")
+"duration": 0.3,
+"texture": ExtResource("2_aq5fl")
+}, {
+"duration": 0.3,
+"texture": ExtResource("3_xka8r")
 }],
 "loop": true,
-"name": &"default",
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yrbh7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.3,
+"texture": ExtResource("3_aq5fl")
+}, {
+"duration": 0.2,
+"texture": ExtResource("4_xka8r")
+}, {
+"duration": 0.2,
+"texture": ExtResource("2_yrbh7")
+}, {
+"duration": 0.2,
+"texture": ExtResource("5_ncqey")
+}, {
+"duration": 0.2,
+"texture": ExtResource("6_qnw5g")
+}, {
+"duration": 0.2,
+"texture": ExtResource("7_dsi02")
+}, {
+"duration": 0.4,
+"texture": ExtResource("8_eprmk")
+}],
+"loop": true,
+"name": &"walking",
 "speed": 5.0
 }]
 
@@ -87,7 +132,8 @@ uppercase = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1338188134]
 light_mask = 2
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_uc036")
+sprite_frames = SubResource("SpriteFrames_ytees")
+animation = &"dead"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1766223154]
 position = Vector2(-1, -0.5)
@@ -125,15 +171,12 @@ pitch_scale = 0.9
 
 [node name="CockFX" type="AudioStreamPlayer" parent="." unique_id=1652930092]
 stream = ExtResource("5_jp3cw")
-bus = &"SFX"
 
 [node name="BootFX" type="AudioStreamPlayer" parent="." unique_id=619154730]
 stream = ExtResource("6_ecf78")
-bus = &"SFX"
 
 [node name="GunAudio" type="AudioStreamPlayer" parent="." unique_id=817856668]
 stream = SubResource("AudioStreamRandomizer_rsrmw")
-bus = &"SFX"
 script = ExtResource("8_vy5gb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
