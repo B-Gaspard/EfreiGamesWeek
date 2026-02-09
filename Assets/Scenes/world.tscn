@@ -131,6 +131,7 @@ shape = SubResource("WorldBoundaryShape2D_pfv4s")
 
 [node name="Timer" type="Timer" parent="." unique_id=2075298249]
 wait_time = 0.5
+autostart = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=967487664]
 

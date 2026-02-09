@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b8r35bulxfnrd" path="res://Assets/Sounds/pilemort.mp3" id="3_7gn42"]
 [ext_resource type="AudioStream" uid="uid://dg4sopkdnhwbg" path="res://Assets/Sounds/diodemort.mp3" id="4_tlll3"]
 [ext_resource type="AudioStream" uid="uid://bso0snfc24xjp" path="res://Assets/Sounds/disjunkhit.mp3" id="5_08duh"]
+[ext_resource type="AudioStream" uid="uid://ga5lvitx7p7" path="res://Assets/Sounds/disjunkdeath.mp3" id="6_khbe8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljrsq"]
 
@@ -52,7 +53,9 @@ stream = ExtResource("5_08duh")
 volume_db = 10.0
 bus = &"SFX"
 
-[node name="DisJunkDeathFX" type="AudioStreamPlayer2D" parent="." unique_id=397231526]
+[node name="DisjunkDeathFX" type="AudioStreamPlayer2D" parent="." unique_id=397231526]
+stream = ExtResource("6_khbe8")
+volume_db = 10.0
 bus = &"SFX"
 
 [connection signal="battery_killed" from="." to="." method="_on_battery_killed"]
@@ -63,4 +66,4 @@ bus = &"SFX"
 [connection signal="finished" from="DiodeDeathFX" to="." method="_on_diode_death_fx_finished"]
 [connection signal="finished" from="TeslaDeathFX" to="." method="_on_tesla_death_fx_finished"]
 [connection signal="finished" from="DisjunkHitFX" to="." method="_on_disjunk_hit_fx_finished"]
-[connection signal="finished" from="DisJunkDeathFX" to="." method="_on_dis_junk_death_fx_finished"]
+[connection signal="finished" from="DisjunkDeathFX" to="." method="_on_dis_junk_death_fx_finished"]

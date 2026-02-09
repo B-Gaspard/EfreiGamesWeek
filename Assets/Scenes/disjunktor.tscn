@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://cflc257e6eda1" path="res://Scripts/disjunktor.gd" id="1_ovhxl"]
 [ext_resource type="Texture2D" uid="uid://jh13vtddhxq" path="res://Assets/Sprites/disjunk.png" id="2_27jmt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
-size = Vector2(19.404257, 6.1806555)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_iluur"]
 atlas = ExtResource("2_27jmt")
 region = Rect2(0, 0, 189, 96)
@@ -135,36 +132,49 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovhxl"]
-size = Vector2(6.4811482, 4.157449)
+size = Vector2(6.4811482, 1.4740062)
 
-[node name="Disjunktor" type="CharacterBody2D" unique_id=600584911 groups=["Disjunktor"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
+size = Vector2(19.404257, 6.3150177)
+
+[node name="Disjunktor" type="CharacterBody2D" unique_id=600584911]
 light_mask = 4
 scale = Vector2(1.0528504, 1.2366751)
 script = ExtResource("1_ovhxl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272042740 groups=["Obstacle"]]
-light_mask = 4
-rotation = 1.5707964
-scale = Vector2(3.9171956, 21.206934)
-shape = SubResource("RectangleShape2D_e2b7p")
-
 [node name="SpawnCooldown" type="Timer" parent="." unique_id=1313007279]
-wait_time = 3.0
+one_shot = true
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1104876171]
 light_mask = 4
 sprite_frames = SubResource("SpriteFrames_mdnc4")
-animation = &"idle"
+animation = &"spawner_innit"
 autoplay = "apparition"
 
-[node name="HitboxArea" type="Area2D" parent="." unique_id=1236068953]
+[node name="HitboxArea" type="RigidBody2D" parent="." unique_id=375995172 groups=["Disjunktor"]]
+gravity_scale = 0.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=1117034568]
 light_mask = 4
-position = Vector2(-0.9498027, 25.067215)
-scale = Vector2(9.877045, 12.064987)
+position = Vector2(-0.9498026, 38.813747)
+scale = Vector2(7.974838, 7.039317)
 shape = SubResource("RectangleShape2D_ovhxl")
+disabled = true
+
+[node name="HitboxArea2" type="RigidBody2D" parent="." unique_id=1003664614 groups=["Obstacle"]]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea2" unique_id=1272042740]
+light_mask = 4
+position = Vector2(-0.94980264, 0)
+rotation = 1.5707964
+scale = Vector2(3.9171956, 21.206934)
+shape = SubResource("RectangleShape2D_e2b7p")
+
+[node name="FodderTimer" type="Timer" parent="." unique_id=1487834231]
+one_shot = true
 
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="FodderTimer" to="." method="_on_fodder_timer_timeout"]

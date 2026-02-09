@@ -55,10 +55,13 @@ func _on_body_entered(body: Node2D) -> void:
 			explosion_fx()
 		
 		elif body.is_in_group("Disjunktor"):
-			mockup($DisjunkHitFX)
+			$/root/World/Disjunktor.HP-=50
+			if $/root/World/Disjunktor.HP <= 0 : 
+				mockup($DisjunkDeathFX)
+				body.get_parent().queue_free()
+			else:
+				mockup($DisjunkHitFX)
 			explosion_fx()
-		
-		
 
 
 func _on_battery_killed(_points) -> void:
