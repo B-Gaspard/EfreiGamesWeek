@@ -3,14 +3,27 @@
 [ext_resource type="Script" uid="uid://bifuu7p0g2qu0" path="res://Scripts/dead_led.gd" id="1_b0fdy"]
 
 [sub_resource type="Gradient" id="Gradient_m22rg"]
+offsets = PackedFloat32Array(0.6081731, 0.6129808)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_b0fdy"]
 gradient = SubResource("Gradient_m22rg")
+width = 100
+height = 100
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
 
 [node name="PointLight2D" type="PointLight2D" unique_id=1415764518]
+light_mask = 3
+visibility_layer = 3
+energy = 0.5
+shadow_enabled = true
+shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_b0fdy")
 script = ExtResource("1_b0fdy")
+
+[node name="Timer" type="Timer" parent="." unique_id=756226071]
+wait_time = 5.0
+one_shot = true
+autostart = true

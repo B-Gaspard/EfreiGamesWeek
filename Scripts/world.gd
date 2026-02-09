@@ -20,8 +20,9 @@ func _on_timer_timeout() -> void:
 	var offset = Vector2.RIGHT.rotated(angle) * distance
 	enemy.global_position = player.global_position + offset
 	
-	if randf_range(1,10)==5:
+	if randi_range(1,10)==5:
 		var led = led_scene.instantiate()
 		led.global_position = player.global_position + offset
+		add_child(led)
 
 	add_child(enemy)

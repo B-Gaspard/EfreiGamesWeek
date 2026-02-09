@@ -3,13 +3,10 @@ extends CharacterBody2D
 @onready var player = $/root/World/Player
 @onready var timer = $Timer
 @onready var light = $PointLight2D
-
-
+var dead_led_scene = preload("res://Assets/Scenes/dead_led.tscn")
 
 const FRAMES = 3
 const SPEED = 80
-
-var alive = 1
 
 func _ready() -> void:
 	var random_index = randi_range(0,2)
@@ -31,4 +28,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _exit_tree() -> void:
-	
+	var dead_led = dead_led_scene.instantiate()
+	dead_led.global_position = global_position
+	dead_led.color = $PointLight2D.color
+	$/root/World.add_child.call_deferred(dead_led)

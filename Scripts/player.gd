@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var SPEED = 100
+var SPEED = 160
 const ALIVE = 180
 const COOLDOWN = 7
 
@@ -42,7 +42,6 @@ func add_speed(amount):
 # ---- PROCESS LOOP ----
 var life = 1000.00
 func _process(delta: float) -> void:
-	print(cooldown)
 	if Input.is_action_just_pressed("reSTART") :
 		get_tree().reload_current_scene()
 	
@@ -86,11 +85,11 @@ func _physics_process(delta: float) -> void:
 		var base_dir = (get_global_mouse_position() - shooty_part.global_position).normalized()
 		var base_angle = base_dir.angle()
 
-			for angle_offset_deg in gun_angles:
-				var bullet = bullet_scene.instantiate()
-				
-				# Direction vector
-				var dir = Vector2.from_angle(base_angle + deg_to_rad(angle_offset_deg))
+		for angle_offset_deg in gun_angles:
+			var bullet = bullet_scene.instantiate()
+			
+			# Direction vector
+			var dir = Vector2.from_angle(base_angle + deg_to_rad(angle_offset_deg))
 
 			# Muzzle offset so bullets don't overlap
 			var muzzle_offset = Vector2(barrel_muzzle_distance, 0).rotated(base_angle + deg_to_rad(angle_offset_deg))
@@ -98,13 +97,8 @@ func _physics_process(delta: float) -> void:
 
 			bullet.direction = dir
 			$/root/World.add_child(bullet)
-			
 			$FireCooldown.start()
 
-				bullet.direction = dir
-				$/root/World.add_child(bullet)
-		else:
-			cooldown += 1
 	if actionnable:
 		move_and_slide()
 
@@ -114,5 +108,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		lose()
 	
 func lose():
-	actionnable = true
+	actionnable = false
 	$DeathFX.play()

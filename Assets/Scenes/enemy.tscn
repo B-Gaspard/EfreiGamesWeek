@@ -25,3 +25,7 @@ position = Vector2(1.9868217e-08, -0.33333343)
 rotation = 1.5707964
 scale = Vector2(0.93814343, 0.94571865)
 shape = SubResource("RectangleShape2D_e2b7p")
+
+[node name="FireCooldown" type="Timer" parent="." unique_id=1313007279]
+wait_time = 0.5
+autostart = true

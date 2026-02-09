@@ -26,4 +26,6 @@ position = Vector2(1, 0)
 rotation = 1.5707964
 texture = ExtResource("2_ry04a")
 
+[connection signal="battery_killed" from="." to="." method="_on_battery_killed"]
+[connection signal="led_killed" from="." to="." method="_on_led_killed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
