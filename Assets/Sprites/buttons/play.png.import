@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkdo7x2l5bkrq"
-path="res://.godot/imported/singlewall.png-644d5ef0e813e2949829a095509cc5dd.ctex"
+uid="uid://b214vyqbb7olc"
+path="res://.godot/imported/play.png-112aafd0a6447c6a3fb4c4ddb2d3884c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Scenes/singlewall.png"
-dest_files=["res://.godot/imported/singlewall.png-644d5ef0e813e2949829a095509cc5dd.ctex"]
+source_file="res://Assets/Sprites/buttons/play.png"
+dest_files=["res://.godot/imported/play.png-112aafd0a6447c6a3fb4c4ddb2d3884c.ctex"]
 
 [params]
 

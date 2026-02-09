@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="EfreiGamesWeek-MGSV"
-run/main_scene="uid://bj58y1elnnkby"
+run/main_scene="uid://bi8runp50rmly"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cldtx3ho0quii"]
 
-[ext_resource type="Script" uid="uid://0opeglx2dhiw" path="res://Assets/Scenes/player.gd" id="1_38rej"]
+[ext_resource type="Script" uid="uid://v03wvs4b5e6y" path="res://Scripts/player.gd" id="1_38rej"]
 [ext_resource type="Texture2D" uid="uid://dd6h0rriaus0f" path="res://Assets/Sprites/ampoule_5.png" id="2_7dd06"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uc036"]

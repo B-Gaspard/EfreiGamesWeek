@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
-var SPEED = 80
+var SPEED = 100
 const ALIVE = 180
+const COOLDOWN = 7
 
 var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
 @onready var shooty_part = $Hand/ShootyPart 
+@onready var anim = $AnimatedSprite2D
 var label_text = "Score : %s\nTTL: %s"
 var score = 0
 var actionnable = true
@@ -40,13 +42,15 @@ func add_speed(amount):
 # ---- PROCESS LOOP ----
 var life = 1000.00
 func _process(delta: float) -> void:
+	print(cooldown)
 	if Input.is_action_just_pressed("reSTART") :
 		get_tree().reload_current_scene()
 	
 	if actionnable:
 		score += 1
 	else :
-		life-=500*get_process_delta_time()
+		anim.play("dead")
+		life-=670*get_process_delta_time()
 		
 	var actual_text = label_text % [score,$PointLight2D.texture.width]
 	
@@ -61,7 +65,7 @@ func _process(delta: float) -> void:
 	$PointLight2D.texture.height= life
 	
 	if Input.is_action_just_pressed("Quit"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://Assets/Scenes/menu.tscn")
 		
 	$Camera2D/BoxContainer/Label.text = actual_text
 
@@ -69,8 +73,10 @@ func _physics_process(delta: float) -> void:
 	# Move player
 	var move_dir = Vector2(Input.get_axis("Left","Right"), Input.get_axis("Up","Down"))
 	if move_dir != Vector2.ZERO:
+		anim.play("walking")
 		velocity = move_dir * SPEED
 	else:
+		anim.play("idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
@@ -80,11 +86,11 @@ func _physics_process(delta: float) -> void:
 		var base_dir = (get_global_mouse_position() - shooty_part.global_position).normalized()
 		var base_angle = base_dir.angle()
 
-		for angle_offset_deg in gun_angles:
-			var bullet = bullet_scene.instantiate()
-			
-			# Direction vector
-			var dir = Vector2.from_angle(base_angle + deg_to_rad(angle_offset_deg))
+			for angle_offset_deg in gun_angles:
+				var bullet = bullet_scene.instantiate()
+				
+				# Direction vector
+				var dir = Vector2.from_angle(base_angle + deg_to_rad(angle_offset_deg))
 
 			# Muzzle offset so bullets don't overlap
 			var muzzle_offset = Vector2(barrel_muzzle_distance, 0).rotated(base_angle + deg_to_rad(angle_offset_deg))
@@ -95,6 +101,10 @@ func _physics_process(delta: float) -> void:
 			
 			$FireCooldown.start()
 
+				bullet.direction = dir
+				$/root/World.add_child(bullet)
+		else:
+			cooldown += 1
 	if actionnable:
 		move_and_slide()
 
