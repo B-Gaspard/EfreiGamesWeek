@@ -149,7 +149,7 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1104876171]
 light_mask = 4
 sprite_frames = SubResource("SpriteFrames_mdnc4")
-animation = &"apparition"
+animation = &"idle"
 autoplay = "apparition"
 
 [node name="HitboxArea" type="RigidBody2D" parent="." unique_id=375995172 groups=["Disjunktor"]]

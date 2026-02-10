@@ -3,6 +3,7 @@ extends Node2D
 var explosion_scene = preload("res://Assets/Scenes/bullet_explosion.tscn")
 var boots = preload("res://Assets/Scenes/bootsUpgrade.tscn")
 var guns = preload("res://Assets/Scenes/bulletsUpgrade.tscn")
+var lafin : PackedScene = load("res://Assets/Scenes/ltbl.tscn")
 signal battery_killed
 signal led_killed
 signal tesla_killed
@@ -59,6 +60,8 @@ func _on_body_entered(body: Node2D) -> void:
 				mockup($DisjunkDeathFX)
 				$/root/World.disjunktor_spawned=false
 				body.get_parent().queue_free()
+				var instance = lafin.instantiate()
+				$/root/World.add_child(instance)
 			else:
 				mockup($DisjunkHitFX)
 			explosion_fx()

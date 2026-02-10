@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dq88boc1d0jrm" path="res://Assets/Sprites/WALLS.png" id="4_uc036"]
 [ext_resource type="PackedScene" uid="uid://bkp7n0q68pkiq" path="res://Assets/Scenes/player.tscn" id="5_44f6d"]
 [ext_resource type="Texture2D" uid="uid://baqf5nx5rocuc" path="res://Assets/Sprites/TILES_GROUND.png" id="7_31mi3"]
-[ext_resource type="PackedScene" uid="uid://cc7iaiw544vsn" path="res://Assets/Scenes/LED.tscn" id="9_0uscc"]
+[ext_resource type="PackedScene" uid="uid://bptq1cf6qfr7h" path="res://Assets/Scenes/lights_out.tscn" id="7_44f6d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31mi3"]
 texture = ExtResource("7_31mi3")
@@ -134,7 +134,6 @@ autostart = true
 tile_map_data = PackedByteArray("AAAGAP7/BQAAAAAAAAAGAP//BQAAAAAAAAAGAAAABQAAAAAAAAAGAAEABQAAAAAAAAAGAAIABQAAAAAAAAD5//7/BQAAAAAAAAD5////BQAAAAAAAAD5/wAABQAAAAAAAAD5/wEABQAAAAAAAAD5/wIABQAAAAAAAAD5//3/BQACAAAAAAACAPv/BQADAAAAAGADAPv/BQADAAAAAGAEAPv/BQADAAAAAGAFAPv/BQADAAAAAGAFAAQABQADAAAAAFAAAAQABQADAAAAAFACAAQABQADAAAAAFD6/wQABQADAAAAAFD7/wQABQAEAAAAAFD8/wQABQAEAAAAAFD9/wQABQAEAAAAAFD+/wQABQAEAAAAAFD//wQABQAEAAAAAFABAAQABQAEAAAAAFADAAQABQAEAAAAAFAEAAQABQAEAAAAAFAGAAQABQAEAAAAAFD5/wQABQAEAAAAAFD5/wMABQACAAAAAAAGAAMABQACAAAAAAAGAP3/BQACAAAAAAABAPv/BQAFAAAAAAAAAPv/BQAFAAAAAAD///v/BQAFAAAAAAD+//v/BQAFAAAAAAD9//v/BQAFAAAAAAD8//v/BQAFAAAAAAD7//v/BQAFAAAAAAD6//v/BQAFAAAAAAD5//v/BQAFAAAAAAAGAPv/BQAFAAAAAAD5//z/BQACAAAAAAAGAPz/BQACAAAAAAA=")
 tile_set = SubResource("TileSet_pfv4s")
 
-[node name="CharacterBody2D" parent="." unique_id=1414257410 instance=ExtResource("9_0uscc")]
-position = Vector2(0, 111)
+[node name="lights_out" parent="." unique_id=1188793444 instance=ExtResource("7_44f6d")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
