@@ -61,7 +61,6 @@ func _on_body_entered(body: Node2D) -> void:
 			$/root/World/Disjunktor.HP-=50
 			if $/root/World/Disjunktor.HP <= 0 : 
 				mockup($DisjunkDeathFX)
-				$/root/World.disjunktor_spawned=false
 				body.get_parent().queue_free()
 				var instance = lafin.instantiate()
 				$/root/World/Player.actionnable=false
