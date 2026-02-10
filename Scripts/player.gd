@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var SPEED = 160
+var SPEED = 100
 const ALIVE = 180
 const COOLDOWN = 1
 
@@ -40,6 +40,16 @@ func add_gun_upgrade():
 	print("Current gun angles:", gun_angles)
 	$CockFX.play()
 
+func add_fire_rate_upgrade():
+	print("fire rate upgrade received")
+
+	$FireCooldown.wait_time = max(
+		$FireCooldown.wait_time - 0.1,
+		0.1
+	)
+	if $FireCooldown.wait_time == 0.1:
+		add_gun_upgrade()
+	
 func add_speed(amount):
 	SPEED += amount
 	$BootFX.play()

@@ -146,7 +146,7 @@ script = SubResource("GDScript_23lac")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hand/ShootyPart" unique_id=1224957090]
 position = Vector2(4, -4)
-scale = Vector2(0.01, 0.01)
+scale = Vector2(0.011, 0.011)
 texture = ExtResource("2_38rej")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1585582581]
@@ -175,7 +175,7 @@ bus = &"SFX"
 script = ExtResource("8_vy5gb")
 
 [node name="FireCooldown" type="Timer" parent="." unique_id=2082937838]
-wait_time = 0.5
+wait_time = 0.6
 one_shot = true
 autostart = true
 
