@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var SPEED = 160
 const ALIVE = 180
-const COOLDOWN = 7
+const COOLDOWN = 1
 
 var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
 @onready var shooty_part = $Hand/ShootyPart 
@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	# Shooting
-	if Input.is_action_just_pressed("shoot") and actionnable and $FireCooldown.is_stopped():
+	if Input.is_action_pressed("shoot") and actionnable and $FireCooldown.is_stopped():
 		$GunAudio.play()
 		var base_dir = (get_global_mouse_position() - shooty_part.global_position).normalized()
 		var base_angle = base_dir.angle()
