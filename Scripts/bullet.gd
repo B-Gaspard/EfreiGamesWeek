@@ -57,6 +57,7 @@ func _on_body_entered(body: Node2D) -> void:
 			$/root/World/Disjunktor.HP-=50
 			if $/root/World/Disjunktor.HP <= 0 : 
 				mockup($DisjunkDeathFX)
+				$/root/World.disjunktor_spawned=false
 				body.get_parent().queue_free()
 			else:
 				mockup($DisjunkHitFX)
@@ -65,12 +66,16 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_battery_killed(_points) -> void:
 	$/root/World/Player.life += 50
+	$/root/World.kills +=1
 
 func _on_led_killed(_points) -> void:
 	$/root/World/Player.life += 50
+	$/root/World.kills +=1
 	
 func _on_tesla_killed(_points) -> void:
 	$/root/World/Player.life += 50
+	$/root/World.kills +=1
+
 
 func random_drop():
 	if randf() < 0.05:

@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bkp7n0q68pkiq" path="res://Assets/Scenes/player.tscn" id="5_44f6d"]
 [ext_resource type="Texture2D" uid="uid://baqf5nx5rocuc" path="res://Assets/Sprites/TILES_GROUND.png" id="7_31mi3"]
 [ext_resource type="PackedScene" uid="uid://cc7iaiw544vsn" path="res://Assets/Scenes/LED.tscn" id="9_0uscc"]
-[ext_resource type="PackedScene" uid="uid://b2pofgbjthqj8" path="res://Assets/Scenes/tesla.tscn" id="10_4lurv"]
-[ext_resource type="PackedScene" uid="uid://cxnusri38hkng" path="res://Assets/Scenes/disjunktor.tscn" id="11_eh6bj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31mi3"]
 texture = ExtResource("7_31mi3")
@@ -138,11 +136,5 @@ tile_set = SubResource("TileSet_pfv4s")
 
 [node name="CharacterBody2D" parent="." unique_id=1414257410 instance=ExtResource("9_0uscc")]
 position = Vector2(0, 111)
-
-[node name="Tesla" parent="." unique_id=600584911 instance=ExtResource("10_4lurv")]
-position = Vector2(-240.99998, 36.999996)
-
-[node name="Disjunktor" parent="." unique_id=2086588387 instance=ExtResource("11_eh6bj")]
-position = Vector2(2, -79)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
