@@ -3,6 +3,8 @@ extends Node2D
 var explosion_scene = preload("res://Assets/Scenes/bullet_explosion.tscn")
 var boots = preload("res://Assets/Scenes/bootsUpgrade.tscn")
 var guns = preload("res://Assets/Scenes/bulletsUpgrade.tscn")
+var fire_rate = preload("res://Assets/Scenes/fireRateUpgrade.tscn")
+
 var lafin : PackedScene = load("res://Assets/Scenes/ltbl.tscn")
 signal battery_killed
 signal led_killed
@@ -52,6 +54,7 @@ func _on_body_entered(body: Node2D) -> void:
 			body.queue_free()
 			emit_signal("tesla_killed",400)
 			random_drop()
+			random_drop()
 			explosion_fx()
 		
 		elif body.is_in_group("Disjunktor"):
@@ -81,14 +84,22 @@ func _on_tesla_killed(_points) -> void:
 
 
 func random_drop():
-	if randf() < 0.05:
-		var drop = boots.instantiate()
+	var roll := randf()
+	var drop_scene = null
+
+	if roll < 0.08:
+		drop_scene = boots
+	elif roll < 0.12:
+		drop_scene = guns
+	elif roll < 0.14:
+		drop_scene = fire_rate
+
+	if drop_scene:
+		var drop = drop_scene.instantiate()
 		drop.global_position = global_position
 		$/root/World.add_child(drop)
-	elif randf() < 0.01:
-		var drop = guns.instantiate()
-		drop.global_position = global_position
-		$/root/World.add_child(drop)
+
+
 
 func explosion_fx():
 		var explosion = explosion_scene.instantiate()

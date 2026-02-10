@@ -174,7 +174,7 @@ bus = &"SFX"
 script = ExtResource("8_vy5gb")
 
 [node name="FireCooldown" type="Timer" parent="." unique_id=2082937838]
-wait_time = 0.2
+wait_time = 0.6
 one_shot = true
 autostart = true
 
