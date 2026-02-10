@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var anim = $AnimatedSprite2D
 @onready var fodder_scene = preload("res://Assets/Scenes/enemy.tscn")
 var fodder_num = 3
+#TODO:faire gaffe à la vie !!!!
 var HP = 1000
 
 func _on_animated_sprite_2d_animation_finished() -> void:

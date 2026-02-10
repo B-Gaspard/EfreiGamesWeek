@@ -182,8 +182,8 @@ autostart = true
 [node name="winlose_splash" type="Sprite2D" parent="." unique_id=1189963220]
 visible = false
 top_level = true
-light_mask = 64
-visibility_layer = 64
+light_mask = 192
+visibility_layer = 192
 position = Vector2(0, -20)
 texture = ExtResource("20_ncqey")
 centered = false
@@ -199,6 +199,7 @@ offset_bottom = 14.0
 
 [node name="Label" type="Label" parent="winlose_splash/BoxContainer" unique_id=1533672000]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "20.24 seconds"
 vertical_alignment = 1
 
@@ -211,6 +212,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="winlose_splash/BoxContainer2" unique_id=1692265565]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "300"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

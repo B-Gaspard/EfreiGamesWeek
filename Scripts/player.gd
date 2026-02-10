@@ -5,6 +5,8 @@ const ALIVE = 180
 const COOLDOWN = 1
 
 var zoom = false
+var won = false
+var already_won = false
 
 var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
 @onready var shooty_part = $Hand/ShootyPart 
@@ -45,6 +47,12 @@ func add_speed(amount):
 # ---- PROCESS LOOP ----
 var life = 1000.00
 func _process(delta: float) -> void:
+	if won and already_won==false:
+		already_won = true
+		actionnable = false
+		$winlose_splash.position = Vector2(position.x, position.y-20)
+		
+	
 	time_elapsed+=delta
 	
 	if Input.is_action_just_pressed("reSTART") :
@@ -56,16 +64,15 @@ func _process(delta: float) -> void:
 		anim.play("dead")
 		life-=670*get_process_delta_time()
 
-	print($Camera2D.zoom.x)
 	if actionnable:
 		life = min(life, 750)
+		#TODO:faire gaffe à la vie !!!!
 		life-=50*get_process_delta_time()
 		targetzoom = (1500/life - $Camera2D.zoom.x)/20
 		if ($Camera2D.zoom.x < 10):
 			$Camera2D.zoom.x += targetzoom
 			$Camera2D.zoom.y += targetzoom
 	else:
-		print(zoom)
 		var variable_avec_un_nom_correct = (2.6-$Camera2D.zoom.x)**3
 		if ($Camera2D.zoom.x<=2.6) and zoom==true:
 			$Camera2D.zoom.x+= 0.2 * delta * variable_avec_un_nom_correct

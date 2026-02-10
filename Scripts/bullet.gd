@@ -61,6 +61,9 @@ func _on_body_entered(body: Node2D) -> void:
 				$/root/World.disjunktor_spawned=false
 				body.get_parent().queue_free()
 				var instance = lafin.instantiate()
+				$/root/World/Player.actionnable=false
+				$/root/World/Player/Area2D.monitoring=true
+				$/root/World/Player/Area2D.monitorable=true
 				$/root/World.add_child(instance)
 			else:
 				mockup($DisjunkHitFX)
