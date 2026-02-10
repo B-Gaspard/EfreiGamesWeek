@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 	var actual_text = label_text % [score,$PointLight2D.texture.width]
 	
 	life = min(life, 750)
-	life-=75*get_process_delta_time()
+	life-=50*get_process_delta_time()
 	var targetzoom = (1500/life - $Camera2D.zoom.x)/20
 	
 	$Camera2D.zoom.x += targetzoom
@@ -68,8 +68,6 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().change_scene_to_file("res://Assets/Scenes/menu.tscn")
-		
-	$Camera2D/BoxContainer/Label.text = actual_text
 
 func _physics_process(delta: float) -> void:
 	# Move player

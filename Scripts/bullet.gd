@@ -18,7 +18,6 @@ const SPEED = 600
 
 func _ready():
 	rotation = direction.angle()
-	
 
 func _physics_process(delta):
 		position += direction * speed * delta

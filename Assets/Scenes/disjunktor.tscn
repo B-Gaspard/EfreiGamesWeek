@@ -78,7 +78,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fap2x")
 }, {
-"duration": 1.0,
+"duration": 2.4,
 "texture": SubResource("AtlasTexture_5bjyw")
 }, {
 "duration": 1.0,
@@ -92,7 +92,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"apparition",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -149,7 +149,7 @@ autostart = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1104876171]
 light_mask = 4
 sprite_frames = SubResource("SpriteFrames_mdnc4")
-animation = &"spawner_innit"
+animation = &"apparition"
 autoplay = "apparition"
 
 [node name="HitboxArea" type="RigidBody2D" parent="." unique_id=375995172 groups=["Disjunktor"]]
