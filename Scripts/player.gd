@@ -4,6 +4,8 @@ var SPEED = 160
 const ALIVE = 180
 const COOLDOWN = 1
 
+var zoom = false
+
 var bullet_scene = preload("res://Assets/Scenes/bullet.tscn")
 @onready var shooty_part = $Hand/ShootyPart 
 @onready var anim = $AnimatedSprite2D
@@ -11,13 +13,14 @@ var label_text = "Score : %s\nTTL: %s"
 var score = 0
 var actionnable = true
 var can_shoot = true
+var targetzoom
 
 # Start with 1 barrel straight ahead
 var gun_angles: Array[float] = [0.0]
 var gun_spread_deg: float = 35.0  # Total spread between outermost barrels
 var barrel_muzzle_distance: float = 16.0  # pixels from center
 
-
+var time_elapsed = 0
 # ---- FUNCTIONS ----
 
 # Add another barrel, automatically distributed
@@ -42,6 +45,8 @@ func add_speed(amount):
 # ---- PROCESS LOOP ----
 var life = 1000.00
 func _process(delta: float) -> void:
+	time_elapsed+=delta
+	
 	if Input.is_action_just_pressed("reSTART") :
 		get_tree().reload_current_scene()
 	
@@ -50,15 +55,26 @@ func _process(delta: float) -> void:
 	else :
 		anim.play("dead")
 		life-=670*get_process_delta_time()
-		
-	var actual_text = label_text % [score,$PointLight2D.texture.width]
-	
-	life = min(life, 750)
-	life-=50*get_process_delta_time()
-	var targetzoom = (1500/life - $Camera2D.zoom.x)/20
-	
-	$Camera2D.zoom.x += targetzoom
-	$Camera2D.zoom.y += targetzoom
+
+	print($Camera2D.zoom.x)
+	if actionnable:
+		life = min(life, 750)
+		life-=50*get_process_delta_time()
+		targetzoom = (1500/life - $Camera2D.zoom.x)/20
+		if ($Camera2D.zoom.x < 10):
+			$Camera2D.zoom.x += targetzoom
+			$Camera2D.zoom.y += targetzoom
+	else:
+		print(zoom)
+		var variable_avec_un_nom_correct = (2.6-$Camera2D.zoom.x)**3
+		if ($Camera2D.zoom.x<=2.6) and zoom==true:
+			$Camera2D.zoom.x+= 0.2 * delta * variable_avec_un_nom_correct
+			$Camera2D.zoom.y+= 0.2 * delta * variable_avec_un_nom_correct
+
+		elif ($Camera2D.zoom.x>=2.6) and zoom==false:
+			$Camera2D.zoom.x-= 0.2 * delta * variable_avec_un_nom_correct * -1
+			$Camera2D.zoom.y-= 0.2 * delta * variable_avec_un_nom_correct * -1
+
 	
 	if life<=1 and actionnable:
 		lose()
@@ -107,7 +123,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Battery") or body.is_in_group("LED") or body.is_in_group("Lightning")) and actionnable:
 		body.queue_free()
 		lose()
-	
+
+
 func lose():
+	if ($Camera2D.zoom.x<=2.6):
+		zoom=true
 	actionnable = false
+	$winlose_splash.position = Vector2(position.x, position.y-20)
+	$winlose_splash/BoxContainer/Label.text= "%.2f seconds" % time_elapsed
+	$winlose_splash/BoxContainer2/Label.text= "%s" % $/root/World.kills
+	$winlose_splash.region_rect.position.x = 480
+	$winlose_splash.visible = true
 	$DeathFX.play()

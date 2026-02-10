@@ -135,7 +135,7 @@ animations = [{
 size = Vector2(6.4811482, 1.4740062)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2b7p"]
-size = Vector2(19.404257, 6.3150177)
+size = Vector2(17.959259, 6.3150177)
 
 [node name="Disjunktor" type="CharacterBody2D" unique_id=600584911]
 light_mask = 4
@@ -153,7 +153,11 @@ animation = &"idle"
 autoplay = "apparition"
 
 [node name="HitboxArea" type="RigidBody2D" parent="." unique_id=375995172 groups=["Disjunktor"]]
+disable_mode = 1
+collision_layer = 8
+collision_mask = 9
 gravity_scale = 0.0
+freeze = true
 
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=1117034568]
 light_mask = 4
@@ -163,14 +167,19 @@ shape = SubResource("RectangleShape2D_ovhxl")
 disabled = true
 
 [node name="HitboxArea2" type="RigidBody2D" parent="." unique_id=1003664614 groups=["Obstacle"]]
+disable_mode = 1
+collision_layer = 8
+collision_mask = 9
 gravity_scale = 0.0
+freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea2" unique_id=1272042740]
 light_mask = 4
-position = Vector2(-0.94980264, 0)
+position = Vector2(-0.94980246, -2.8301713)
 rotation = 1.5707964
 scale = Vector2(3.9171956, 21.206934)
 shape = SubResource("RectangleShape2D_e2b7p")
+debug_color = Color(0, 0.6, 0.69803923, 0.49019608)
 
 [node name="FodderTimer" type="Timer" parent="." unique_id=1487834231]
 one_shot = true
