@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://4dcff1bpeqxs"]
+
+[ext_resource type="Texture2D" uid="uid://cbmgrmm1m52ve" path="res://Assets/Sprites/LTBL.png" id="1_8b3te"]
+[ext_resource type="Script" uid="uid://c3fj7kkv62qt" path="res://Assets/Scenes/light.gd" id="2_d73vh"]
+[ext_resource type="AudioStream" uid="uid://cwqa1ot8hua0h" path="res://Assets/Sounds/LTBL.mp3" id="2_i1un1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d73vh"]
+atlas = ExtResource("1_8b3te")
+region = Rect2(0, 0, 451, 92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ssav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d73vh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_i1un1"]
+offsets = PackedFloat32Array(0, 0.012019231, 0.021634616)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.92941177, 0.9647059, 0.49019608, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d73vh"]
+gradient = SubResource("Gradient_i1un1")
+
+[node name="LTBL" type="Node2D" unique_id=1575136532]
+
+[node name="ltblsprite" type="AnimatedSprite2D" parent="." unique_id=1304294508]
+light_mask = 2
+visibility_layer = 512
+position = Vector2(0, -50)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2ssav")
+
+[node name="light" type="Sprite2D" parent="ltblsprite" unique_id=1628632777]
+show_behind_parent = true
+light_mask = 128
+position = Vector2(-208.25006, 0)
+scale = Vector2(9.408202, 1183)
+texture = SubResource("GradientTexture1D_d73vh")
+script = ExtResource("2_d73vh")
+
+[node name="BoxContainer" type="BoxContainer" parent="ltblsprite/light" unique_id=356913265]
+top_level = true
+offset_left = -305.0
+offset_top = 143.0
+offset_right = 898.0
+offset_bottom = 280.0
+
+[node name="Label" type="Label" parent="ltblsprite/light/BoxContainer" unique_id=1163504364]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "You survived 120.02 seconds 
+and killed 100 enemies"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ltbl" type="AudioStreamPlayer" parent="." unique_id=1625278785]
+stream = ExtResource("2_i1un1")
+autoplay = true

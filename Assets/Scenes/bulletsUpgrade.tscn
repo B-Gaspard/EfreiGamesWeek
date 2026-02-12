@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://33ccqyeuscb5"]
 
-[ext_resource type="Script" uid="uid://bdtt8drydtoys" path="res://Assets/Scenes/bullets_upgrade.gd" id="1_nawjf"]
+[ext_resource type="Script" uid="uid://bdtt8drydtoys" path="res://Scripts/bullets_upgrade.gd" id="1_nawjf"]
 [ext_resource type="Texture2D" uid="uid://boxjmg7wropnd" path="res://Assets/Sprites/gun.PNG" id="2_nawjf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vwx2u"]
@@ -15,8 +15,8 @@ script = ExtResource("1_nawjf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=468009707]
 material = SubResource("CanvasItemMaterial_vwx2u")
-scale = Vector2(0.3, 0.3)
-skew = 0.26529005
+scale = Vector2(0.4, 0.4)
+skew = 0.2617994
 texture = ExtResource("2_nawjf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034923613]

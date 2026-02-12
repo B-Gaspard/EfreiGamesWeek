@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1podm6xfi2s3"
-path="res://.godot/imported/based-on-another-post-i-saw-i-hereby-made-a-shitpost-v0-y2g2meex822d1.jpeg-21e7747f946d1804c51f4669b3819712.ctex"
+uid="uid://bmngfke8de3gy"
+path="res://.godot/imported/LIGHTS_OUT.png-9f2ac7ca469a2d335ddf50d214c2b7ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://based-on-another-post-i-saw-i-hereby-made-a-shitpost-v0-y2g2meex822d1.jpeg"
-dest_files=["res://.godot/imported/based-on-another-post-i-saw-i-hereby-made-a-shitpost-v0-y2g2meex822d1.jpeg-21e7747f946d1804c51f4669b3819712.ctex"]
+source_file="res://Assets/Sprites/LIGHTS_OUT.png"
+dest_files=["res://.godot/imported/LIGHTS_OUT.png-9f2ac7ca469a2d335ddf50d214c2b7ee.ctex"]
 
 [params]
 

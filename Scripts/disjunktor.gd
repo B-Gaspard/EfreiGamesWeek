@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var anim = $AnimatedSprite2D
 @onready var fodder_scene = preload("res://Assets/Scenes/enemy.tscn")
 var fodder_num = 3
+#TODO:faire gaffe à la vie !!!!
 var HP = 1000
 
 func _on_animated_sprite_2d_animation_finished() -> void:
@@ -10,11 +11,11 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		$SpawnCooldown.wait_time=7
 	elif anim.animation=="spawner_innit":
 		anim.play("spawner")
+		$HitboxArea/Hitbox.disabled=false
 		$FodderTimer.start()
 
 func _on_spawn_cooldown_timeout() -> void:
 	anim.play("spawner_innit")
-	$HitboxArea/Hitbox.disabled=false
 
 func _on_fodder_timer_timeout() -> void:
 	if fodder_num == 0:

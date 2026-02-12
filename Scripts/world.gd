@@ -45,7 +45,6 @@ func _on_timer_timeout() -> void:
 		add_child(tesla)
 
 	if kills>=80 and !disjunktor_spawned:
-		kills=0
 		kills_quatrevingts +=1
 		disjunktor_spawned=true
 		var disjunktor = disjunktor_scene.instantiate()

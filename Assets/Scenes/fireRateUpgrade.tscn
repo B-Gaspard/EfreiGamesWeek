@@ -1,22 +1,24 @@
-[gd_scene format=3 uid="uid://5gjd1c07ehlh"]
+[gd_scene format=3 uid="uid://cggl77nkif6rg"]
 
-[ext_resource type="Texture2D" uid="uid://iwxr3f3w4oi1" path="res://Assets/Sprites/bootsSpeed.png" id="1_0u5f7"]
-[ext_resource type="Script" uid="uid://bfrogcgk8xti5" path="res://Scripts/boots_upgrade.gd" id="1_vwx2u"]
+[ext_resource type="Script" uid="uid://dx71585jl1ug4" path="res://Assets/Scenes/fire_rate_upgrade.gd" id="1_asbfj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vwx2u"]
 light_mode = 2
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aur1c"]
+load_path = "res://.godot/imported/bullet.PNG-d463b41596a81bcf24541f550081ba03.ctex"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0u5f7"]
-radius = 245.50764
+radius = 299.99997
 
 [node name="StaticBody2D" type="Area2D" unique_id=990945858]
 scale = Vector2(0.05, 0.05)
-script = ExtResource("1_vwx2u")
+script = ExtResource("1_asbfj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=468009707]
 material = SubResource("CanvasItemMaterial_vwx2u")
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("1_0u5f7")
+scale = Vector2(20, 20)
+texture = SubResource("CompressedTexture2D_aur1c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034923613]
 shape = SubResource("CircleShape2D_0u5f7")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ki4mwm0lym7m" path="res://Assets/Sprites/LIGHTBOLD.png" id="1_oj5a7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lv2k"]
-size = Vector2(6, 8)
+size = Vector2(4.477608, 5.0847454)
 
 [node name="Node2D" type="CharacterBody2D" unique_id=304416389 groups=["Lightning"]]
 scale = Vector2(2.6800022, 2.3600001)

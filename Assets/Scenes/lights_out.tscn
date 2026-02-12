@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bptq1cf6qfr7h"]
+
+[ext_resource type="Texture2D" uid="uid://bmngfke8de3gy" path="res://Assets/Sprites/LIGHTS_OUT.png" id="1_i1un1"]
+[ext_resource type="Script" uid="uid://dxednkjk7cbl7" path="res://Assets/Scenes/animated_sprite_2d.gd" id="2_jn52b"]
+[ext_resource type="AudioStream" uid="uid://2d1l62mxxk1r" path="res://Assets/Sounds/lights_out.mp3" id="3_2ssav"]
+[ext_resource type="Script" uid="uid://dsc2u1jnpagnu" path="res://Assets/Scenes/point_light_2d.gd" id="4_d73vh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suk73"]
+atlas = ExtResource("1_i1un1")
+region = Rect2(0, 0, 185, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4hdj"]
+atlas = ExtResource("1_i1un1")
+region = Rect2(185, 0, 185, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2ghi"]
+atlas = ExtResource("1_i1un1")
+region = Rect2(370, 0, 185, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekn0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suk73")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4hdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2ghi")
+}],
+"loop": true,
+"name": &"shake",
+"speed": 20.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_8k1t5"]
+offsets = PackedFloat32Array(0, 0.012019231)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cex55"]
+gradient = SubResource("Gradient_8k1t5")
+
+[node name="lights_out" type="Node2D" unique_id=1188793444]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1533335546]
+light_mask = 2
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ekn0u")
+animation = &"idle"
+script = ExtResource("2_jn52b")
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D" unique_id=1337656158]
+scale = Vector2(5.0781245, 784)
+texture = SubResource("GradientTexture1D_cex55")
+script = ExtResource("4_d73vh")
+
+[node name="TimeChange" type="Timer" parent="AnimatedSprite2D" unique_id=1928405385]
+wait_time = 0.78
+one_shot = true
+autostart = true
+
+[node name="TimeOut" type="Timer" parent="AnimatedSprite2D" unique_id=1964348007]
+wait_time = 2.001
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimatedSprite2D" unique_id=2086755590]
+stream = ExtResource("3_2ssav")
+autoplay = true
+bus = &"SFX"
+
+[connection signal="timeout" from="AnimatedSprite2D/TimeChange" to="AnimatedSprite2D" method="_on_time_change_timeout"]
+[connection signal="timeout" from="AnimatedSprite2D/TimeChange" to="AnimatedSprite2D/PointLight2D" method="_on_time_change_timeout"]
+[connection signal="timeout" from="AnimatedSprite2D/TimeOut" to="AnimatedSprite2D" method="_on_time_out_timeout"]
