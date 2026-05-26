@@ -33,7 +33,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if mocked == false:
 		if body.is_in_group("LED"):
 			mockup($DiodeDeathFX)
-			body.queue_free()
+			body.free()
 			emit_signal("led_killed",800)
 			random_drop()
 			explosion_fx()
@@ -44,14 +44,14 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		elif body.is_in_group("Battery"):
 			mockup($PileDeathFX)
-			body.queue_free()
+			body.free()
 			emit_signal("battery_killed",800)
 			random_drop()
 			explosion_fx()
 			
 		elif body.is_in_group("Tesla"):
 			mockup($TeslaDeathFX)
-			body.queue_free()
+			body.free()
 			emit_signal("tesla_killed",400)
 			random_drop()
 			random_drop()

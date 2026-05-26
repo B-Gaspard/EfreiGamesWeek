@@ -25,9 +25,14 @@ var barrel_muzzle_distance: float = 16.0  # pixels from center
 var time_elapsed = 0
 # ---- FUNCTIONS ----
 
+# God mode
+#func _ready() -> void:
+	#for i in range (160):
+		#add_gun_upgrade()
+		#add_fire_rate_upgrade()
+
 # Add another barrel, automatically distributed
 func add_gun_upgrade():
-	print("Gun upgrade received")
 	var num_barrels = gun_angles.size() + 1
 	gun_angles.clear()
 	# Calculate symmetrical angles around 0
@@ -37,11 +42,9 @@ func add_gun_upgrade():
 		for i in range(num_barrels):
 			var angle = lerp(-gun_spread_deg/2, gun_spread_deg/2, float(i)/(num_barrels-1))
 			gun_angles.append(angle)
-	print("Current gun angles:", gun_angles)
 	$CockFX.play()
 
 func add_fire_rate_upgrade():
-	print("fire rate upgrade received")
 
 	$FireCooldown.wait_time = max(
 		$FireCooldown.wait_time - 0.1,
